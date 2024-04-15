@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>로그인 정보를 입력하세요</h1>
+	<!-- 
+ http://localhost:9090/webproject/day01/loginCheck.jsp?userid=qwer&userpw=qwer
+ method="get" : 전송방식이 get, 주소창에 전소되는 data가 display된다.
+ method="post" : 전송방식이 get, 주소창에 전소되는 data가 display되지 않고 요청문서의 body에 숨어서 간다.
+ submit : 서버에 전송하라는 의미 form action으로 이동
+  -->
+	<form action="./jsp/loginCheck.jsp">
+		<fieldset>
+			<legend>로그인정보</legend>
+			<label>아이디:<input type="text" name="userid" required></label>
+			<label>패스워드:<input type="text" name="userpw" required></label>
+		<input type="submit" value="로그인하기">
+		<input type="reset">
+		</fieldset>
+		<fieldset>
+		<legend>다른서비스</legend>
+		<input>
+		</fieldset>
+	</form>
+</body>
+</html>

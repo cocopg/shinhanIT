@@ -8,16 +8,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#container{
+	width:800px;
+	border:1px solid gray;
+	margin:0 auto;
+}
+table{
+	margin:0 auto;
+}
+table, th, td{
+	border-collapse:collapse;
+	text-align:left;
+	padding:10px;
+}
+th{
+background:skyblue;
+color:white;
+}
+tbody tr:nth-child(2n){
+	background:#2c2c2c;
+	color:#fff;
+}
+tbody tr:nth-child(2n+1){
+	background:#fff;
+}
+	h1{
+	height:100px;
+	border:1px solid #000;
+	text-align:center;
+	line-height:100px;
+	background:beige;
+	color:orange;
+	margin:0;
+	}
+	a.headT{
+	text-decoration:none;
+	background:black;
+	color:white;
+	border-radius:5px;
+	padding:10px;
+	}
+</style>
 </head>
 <body>
+<div id="container">
 	<h1>전체 직원 목록</h1>
-	<a href="empInsert.jsp">신규직원 등록</a>
+	<a class="headT" href="empInsert.jsp">신규직원 등록</a>
 	<table border="1">
 		<caption>직원목록</caption>
 		<thead>
 			<tr>
 				<th>직원번호</th>
-				<th>성</th>
+				<th>성0</th>
 				<th>이름</th>
 				<th>이메일</th>
 				<th>전화번호</th>
@@ -42,5 +85,6 @@
 			<% }%>
 		</tbody>
 	</table>
+	</div>
 </body>
 </html>

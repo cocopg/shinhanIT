@@ -24,6 +24,9 @@
 	a[title |= "chn"] {  /* 속성값이 "chn"이거나 "chn-"로 시작하는 요소를 찾는 선택자 */
 		background: url(images/ch.png) no-repeat left center;
 	}
+	a[title ~= "jap"] {  /* 속성값이 "chn"이거나 "chn-"로 시작하는 요소를 찾는 선택자 */
+		border:1px solid green;
+	}
 </style>
 </head>
 
@@ -32,6 +35,8 @@
 		<li>외국어 서비스 : </li>
 		<li><a href="#" title="us-english">영어</a></li>
 		<li><a href="#" title="ja">일본어</a></li>
+		<li><a href="#" title="jap">일본어</a></li>
+		<li><a href="#" title="ja jap">일본어</a></li>
 		<li><a href="#" title="chn">중국어</a></li>
 	</ul>
 </body>

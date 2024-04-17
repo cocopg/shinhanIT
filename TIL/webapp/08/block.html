@@ -1,0 +1,32 @@
+ <!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>블록 레벨과 인라인 레벨</title>
+		<style>
+			/*요소 사이에 빈칸이 있는 것은 자손을 의미*/
+			body  * {
+				border:1px solid blue;
+			}
+			.accent {
+				color:red;
+				font-weight:bold;
+			}
+			.img1{
+				transform: scaleX(-1);
+			}
+			h1{
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>시간이란...</h1>
+		<div>내일 죽을 것처럼 <span class="accent">오늘</span>을 살고 </div>
+		<p>영원히 살 것처럼 <br>내일을 꿈꾸어라. </p>	  
+
+		<img class="img1" src="images/cat.jpg">
+		<img class="img2" src="images/cat.jpg">
+		<a>집보내줘</a>
+</body>
+</html>

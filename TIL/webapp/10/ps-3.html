@@ -53,11 +53,26 @@
   .contents p:nth-of-type(3) {
     background-color:#00b900;
   }  
+  /* 자식으로 처음나온다 */
+  .container :nth-child(1){
+    background-color: lightgreen;
+  }
+  /* container의 자손중에 처음 나오는 p */
+  .container p:nth-of-type(1){
+    background-color: skyblue;
+  }
+  
 </style>
 </head>
 
 <body>
 <div class="container">
+  <p>p1</p>
+  <p>p2</p>
+  <p>p3</p>
+  <p>p4</p>
+  <p>p5</p>
+
     <nav class="navi">
       <ul>
         <li><a href="#">이용 안내</a></li>

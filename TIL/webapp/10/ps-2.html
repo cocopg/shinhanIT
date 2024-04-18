@@ -110,6 +110,10 @@
       font-size: 13px;
       width: 110px;
     }
+    #signup input+label:hover{
+      color:#f00;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -133,7 +137,7 @@
           </li>
           <li>
             <label for="tel">연락처</label>
-            <input id="tel" name="tel" type="tel">
+            <input id="tel" name="tel" type="tel" value="010-1234-5678" disabled>
           </li>          
         </ul>
       </fieldset>
@@ -149,6 +153,22 @@
             <label for="family">가족형(최대 8인)</label>
           </li>          
         </ul>
+      </fieldset>
+
+      <fieldset>
+        <input type="radio" name="gender">
+        <label>남자</label>
+        <input type="radio" name="gender">
+        <label>여자</label>
+      </fieldset>
+
+      <fieldset>
+        <input type="checkbox" name="major">
+        <label>컴공</label>
+        <input type="checkbox" name="major">
+        <label>경영</label>
+        <input type="checkbox" name="major">
+        <label>국어</label>
       </fieldset>
       <button type="submit"> 제출 </button> 
     </form>

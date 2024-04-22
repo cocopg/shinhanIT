@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: aquamarine;
+            color: blue;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>복습</h1>
+    <button onclick="f1()">변수범위1</button>
+    <button onclick="f2()">변수범위2</button>
+    <button onclick="f3()">데이터타입</button>
+    <button onclick="f4()">함수</button>
+    <hr>
+    <div id="here">
+        여기
+    </div>
+</body>
+<script>
+    //1.선언적 함수
+    function f4() {
+        //2.내부함수
+        call();
+        function call() {
+            here.innerHTML += "<hr>" + "내부함수";
+        }
+        //3.익명함수
+        var aa = function () {
+            here.innerHTML += "<hr>" + "익명함수";
+        };
+        aa();
+        //즉시실행함수
+        (function () {
+            here.innerHTML += "<hr>" + "즉시실행함수";
+        })();
+        //5.화살표함수
+        var aa = () => here.innerHTML += "<hr>" + "화살표함수";
+        aa();
+        // var aa = () => {
+        //     here.innerHTML += "<hr>" + "익명함수";
+        // };
+        var bb = (a, b) => a + b;
+        here.innerHTML += "<br>" + bb(20, 30);
+
+        var cc = (a, b)=>{
+            here.innerHTML += "<hr>" + "화살표함수 argument와 return";
+            return a+b;
+        };
+        var result = cc(10,20);
+        here.innerHTML += "<hr>" + cc(10,20);
+    }
+</script>
+<script>
+    function f3() {
+        var a;
+        here.innerHTML += "<br>" + a + "==>" + typeof (a);
+        a = 100.5;
+        here.innerHTML += "<br>" + a + "==>" + typeof (a);
+        a = "신한";
+        here.innerHTML += "<br>" + a + "==>" + typeof (a);
+        a = 10 > 20;
+        here.innerHTML += "<br>" + a + "==>" + typeof (a);
+        a = [1, 2, 3, , "ㅁㅁㄹㅇㅁ", true, {}, function () { }, []];
+        here.innerHTML += "<br>" + a + "==>" + typeof (a);
+        a = {};
+    }
+</script>
+<script>
+    var a = 100;
+    function f2() {
+        var b = 200;
+        let d = 400;
+        {
+            var c = 300;
+            let e = 500;
+        }
+        here.innerHTML = a + b + c + d + e;
+    }
+</script>
+<script>
+    console.log(v1); //not define아니고 undefined(오류아님)
+    var v1 = 100;
+    v2 = 200;
+
+    f1();
+    function f1() {
+        var v3 = 300;
+        v4 = 400;
+        output = "금요일";
+        document.getElementById("here").innerHTML = output + (v1 + v2 + v3 + v4);
+    }
+    f1();
+    document.getElementById("here").innerHTML = v1 + v2 + v4;
+</script>
+
+</html>

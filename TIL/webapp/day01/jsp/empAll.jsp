@@ -6,6 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	//이메일찾기
+	$(function(){
+		$("#btn1").on("click", function(){
+			$("tr td:nth-child(4)").filter(function(index, item){
+				if($(item).text().indexOf("@")>=0) return true;
+				return false;
+			}).css("color","red");
+		});
+		//급여찾기:급여가 10000이상인 것만 salary:nth-child(7)
+		$("#btn2").on("click", function(){
+			$("tr td:nth-child(7)").css("color","black");
+			$("tr td:nth-child(7)").filter(function(index, data){
+				// console.log(typeof($(item).text()), $(item).text()>=10000);
+				return $(item).text()>=10000;
+			}).css("color","blue");
+		});
+	})
+</script>
 <style>
 #container{
 	width:800px;

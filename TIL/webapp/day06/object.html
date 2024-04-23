@@ -18,6 +18,7 @@
     <button>JSON</button>
     <button>예외처리</button>
     <button>클래스</button>
+    <button>배열추가?</button>
 
 
     <div id="'here">여기</div>
@@ -33,6 +34,14 @@
     document.querySelector("button:nth-child(7)").addEventListener("click", f7);
     document.querySelector("button:nth-child(8)").addEventListener("click", f8);
     document.querySelector("button:nth-child(9)").addEventListener("click", f9);
+    document.querySelector("button:nth-child(10)").addEventListener("click", f10);
+
+    function f10(){
+        var arr = [1,2,3,4,5];
+        var a1=arr.splice(2,0,"0");
+
+        document.write("추가된배열"+ arr); //지우지 않고 원하는 위치에 삽입 가능~
+    }
 
     function f9() {
         var s1 = new Student2("은정", 100, 90, 80);

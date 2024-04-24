@@ -1,0 +1,64 @@
+package com.shinhan.day15;
+
+import java.util.List;
+import java.util.Scanner;
+
+//사용자가 요청->Controller->service
+//사용자 display<-VIEW<-Controller<-service
+//나중에는 servlet으로 작성할 예정(서버에서 실행되는 자바프로그램)
+public class EmpController {
+
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		boolean isStop = false;
+		EmpService empService = new EmpService();
+		while (!isStop) {
+			int selectJob = menuDisplay();
+			switch (selectJob) {
+			case 0 -> {
+				isStop = true;
+			}
+			case 1 -> {
+				List<EmpDTO> emplist = empService.selectAll();
+				EmpView.print(emplist, "모든직원 조회");
+			}
+			case 2 -> {
+				System.out.println("조회할 직원 번호>>");
+				int empid = sc.nextInt();
+				EmpView.print(empService.selecyById(empid),"특정직원 조회");
+			}
+			case 3 -> {
+				System.out.println("조회할 직원 번호>>");
+				int empid = sc.nextInt();
+				EmpView.print(empService.selecyById(empid),"특정직원 조회");
+			}
+			case 4 -> {
+				System.out.println("조회할 JOB>>");
+				String jobid = sc.next();
+				EmpView.print(empService.selectByJob(jobid),"특정직원 조회");
+			}
+
+			default -> {
+			}
+
+			}
+		}
+		System.out.println("===========END===========");
+	}
+
+	private static int menuDisplay() {
+		System.out.println("==============");
+		System.out.println("1.모든직원조회");
+		System.out.println("2.특정직원조회");
+		System.out.println("3.특정부서직원조회");
+		System.out.println("4.특정JOB직원조회");
+		System.out.println("0.종료");
+		System.out.println("작업선택>>");
+		int job = sc.nextInt();
+		System.out.println("==============");
+		return job;
+
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.shinhan.day05;
+
+public class Account {
+	private int balance;
+	static final int MIN_BALANCE = 0;
+	static final int MAX_BALANCE = 1000000;
+	public int getBalance() {
+		return balance;
+	}
+	public void setbalance(int balance) {
+		if(balance>+MIN_BALANCE && balance<+MAX_BALANCE) {
+			System.out.println();
+		}
+	}
+}

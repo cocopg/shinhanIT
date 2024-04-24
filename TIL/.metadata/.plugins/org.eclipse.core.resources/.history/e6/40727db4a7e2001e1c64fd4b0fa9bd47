@@ -1,0 +1,30 @@
+package com.shinhan.day04;
+
+public class Person {
+	static int numberOfPerson;
+	int age;
+	String name;
+	
+	Person(int age, String name) {
+		this.age = age;
+		this.name = name;
+		numberOfPerson++;
+	}
+	Person(){ //나이 12살, 이름 Anonymous로 초기화
+		this(12,"Anonymous");
+		//age=12;
+		//name="Anonymous";
+		
+	}
+
+	void selfIntorduce(){
+		System.out.printf("내 이름은"
+				+ name
+				+ "이며,나이는 "
+				+ age
+				+ "살입니다");
+	}
+	int getPopulation(){
+		return numberOfPerson;
+	}
+}

@@ -1,0 +1,19 @@
+package com.shinhan.day06.lab;
+
+public class Parent {
+	public String nation;
+
+	public Parent() {
+		this("대한민국");
+		System.out.println();
+	}
+}
+
+public class ChildExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

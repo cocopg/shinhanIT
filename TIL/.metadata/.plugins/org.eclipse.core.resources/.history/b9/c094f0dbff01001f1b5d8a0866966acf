@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table ,tr, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="../../js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $("button:nth-of-type(1)").on("click", f1);
+            $("button:nth-of-type(2)").on("click", f2);
+            $("button:nth-of-type(3)").on("click", f3);
+            $("button:nth-of-type(4)").on("click", f4);
+        });
+
+        function f4(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                $("#data-")
+            };
+            xhr.open("get","emplist.jsp",true)//비동기
+            xhr.send();
+        }
+
+
+        function f3() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                //서버로 전송하기 전, 후를 체크하여 원하는 data를 받을 수 있다.
+                console.log(xhr.readyState);
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var obj = JSON.parse(xhr.responseText);
+                    var arr = obj.nations;
+                    var output = "";
+
+                    $.each(arr, function (index, item) {
+
+                        console.log(item);
+                        output += `<tr><td>${item.no}</td>
+                                <td>${item.name}</td>
+                                <td>${item.capital}</td>
+                                <td>${item.region}</td>
+                                <tr>`
+                    });
+
+                    $("#data-table").html(output);
+
+                } else if (xhr.status == 404) {
+                    $("#here").html("존재하지 않는 페이지입니다.");
+                }
+
+            };
+            xhr.open("get", "data.json"); //안쓰면 true->비동기
+            xhr.send();
+            alert("---------");
+        }
+
+        function f2() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                //서버로 전송하기 전, 후를 체크하여 원하는 data를 받을 수 있다.
+                console.log(xhr.readyState);
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var s = $("#here").html();
+                    $("#here").html(s + xhr.responseText);
+                } else if (xhr.status == 404) {
+                    $("#here").html("존재하지 않는 페이지입니다.");
+                }
+
+            };
+            xhr.open("get", "11-17.html"); //안쓰면 true->비동기
+            xhr.send();
+            $("#here").html("---------");
+        }
+
+        function f1() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "11-17.html", false); //false->동기, true->비동기
+            xhr.send();//동기이면 요청하고 응답이 올 때 까지 기다린다.
+            //비동기이면 서버 응답을 기다리지 않고 아래문장으로 이동한다.
+            //alert(xhr.responseText);
+            // console.log(xhr.responseText);
+            $("#here").html(xhr.responseText);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ajax연습</h1>
+    <button>js이용1(동기통신)</button>
+    <button>js이용2(비동기통신)</button>
+    <button>js이용2(비동기통신 JSON)</button>
+    <button>js이용2(비동기통신 JSP)</button>
+    <hr>
+    <div id="here">
+        <table>
+            <thead>
+                <tr>
+                    <th>no</th>
+                    <th>name</th>
+                    <th>capital</th>
+                    <th>region</th>
+                </tr>
+            </thead>
+            <tbody id="data-table">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

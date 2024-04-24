@@ -1,0 +1,15 @@
+package com.shinhan.day04;
+
+public class PersonTest {
+
+	public static void main(String[] args) {
+		Person p1 = new Person(12,"철수");
+		Person p2 = new Person(16,"미미");
+		Person p3 = new Person(11,"영희");
+		
+		p1.selfIntorduce();
+		p2.selfIntorduce();
+		p3.selfIntorduce();
+	}
+
+}

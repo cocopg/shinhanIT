@@ -1,0 +1,29 @@
+package com.shinhan.day15;
+
+import java.util.List;
+
+//Controller->Service->DAO
+//          <-         <- 
+//Service : 비지니스 로직을 수행한다. 
+public class EmpService {
+
+	EmpDAO empDAO = new EmpDAO();
+	
+	//4.특정JOB인 직원조회
+  	public List<EmpDTO> selectByJob(String jobid) {
+		return empDAO.selectByJob(jobid);
+	}
+	 //3.특정부서의 직원모두조회
+  	public List<EmpDTO> selectBydept(int deptid) {
+  		return empDAO.selectBydept(deptid);
+  	}
+	//2.특정직원의 상세보기
+    public EmpDTO selectById(int empid) {
+    	return empDAO.selectById(empid);
+    }
+	
+	//1.직원모두조회
+	public List<EmpDTO> selectAll() {		
+		return empDAO.selectAll();
+	}
+}

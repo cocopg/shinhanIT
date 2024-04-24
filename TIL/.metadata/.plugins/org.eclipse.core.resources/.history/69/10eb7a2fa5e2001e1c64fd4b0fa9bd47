@@ -1,0 +1,44 @@
+package com.shinhan.day04;
+
+public class Person {
+	int numberOfPerson;
+	int age;
+	String name = "Anonymous";
+	
+	public Person(int age, String name) {
+		this.age = age;
+		this.name = name;
+		numberOfPerson++;
+	}
+	
+	public int getNumberOfPerson() {
+		return numberOfPerson;
+	}
+
+	public void setNumberOfPerson(int numberOfPerson) {
+		this.numberOfPerson = numberOfPerson;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void selfIntorduce(){
+		System.out.printf("내 이름은 %d이며, 나이는 %d살 입니다.",name, age);
+	}
+	public static int getPopulation(){
+		return numberOfPerson();
+	}
+}

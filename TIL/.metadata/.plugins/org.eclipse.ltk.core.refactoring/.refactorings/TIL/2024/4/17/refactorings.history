@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;day08&apos;&#x0D;&#x0A;- Original project: &apos;TIL&apos;&#x0D;&#x0A;- Destination element: &apos;day08&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.shinhan.emp.EmpDTO.java&#x0D;&#x0A;     com.shinhan.emp.EmpService.java" description="Copy compilation units" element1="/java&lt;com.shinhan.emp{EmpDTO.java" element2="/java&lt;com.shinhan.emp{EmpService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1713938538486" target="/webapp/day08" units="2" version="1.0"/>
+</session>

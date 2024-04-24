@@ -1,0 +1,225 @@
+package project1;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.shinhan.day15.EmpDTO;
+import com.shinhan.day15.EmpService;
+import com.shinhan.day15.EmpView;
+import com.shinhan.util.DateUtil;
+
+//사용자가 요청->Controller->Service
+//사용자display<-VIEW<-Controller<-Service 
+//나중에는 Servlet(서버에서 실행되는 자바프로그램)으로 작성할 예정이다. 
+public class IoTController {
+
+	static Scanner sc = new Scanner(System.in);
+	static LoginDAO loginDAO = new LoginDAO();
+
+	public static void main(String[] args) {
+//		int loginCount = 3;
+//		boolean isLogin = loginDisplay();
+//		for (int i = 3; i > 1; i--) {
+//			if (!isLogin && loginCount > 0) {
+//				if (!isLogin) {
+//					System.out.println("아이디 또는 비밀번호가 틀렸습니다");
+//					loginCount--;
+//					System.out.println("남은 로그인 시도 횟수는 " + loginCount + "입니다.");
+//				}
+//				isLogin = loginDisplay();
+//			}
+//		}
+//		if (isLogin) {
+//			System.out.println("로그인성공!");
+//
+//		} else {
+//			System.out.println("3회 실패해서 프로그램을 종료합니다.");
+//			return;
+//		}
+		boolean loginStop = false;
+		while (!loginStop) {
+			int loginjob = startDisplay();
+			switch (loginjob) {
+			case 0 -> {
+				loginStop = true;
+			}
+			case 1 -> {
+				int loginCount = 3;
+				String isLogin = loginDisplay();
+				for (int i = 3; i > 1; i--) {
+					if (isLogin==null && loginCount > 0) {
+						if (isLogin==null) {
+							System.out.println("아이디 또는 비밀번호가 틀렸습니다");
+							loginCount--;
+							System.out.println("남은 로그인 시도 횟수는 " + loginCount + "입니다.");
+						}
+						isLogin = loginDisplay();
+					}
+				}
+				if (isLogin!=null) {
+					System.out.println("로그인성공!");
+		
+				} else {
+					System.out.println("3회 실패해서 프로그램을 종료합니다.");
+					return;
+				}
+			}
+
+			}
+		}
+
+		boolean isStop = false;
+		IoTService iotService = new IoTService();
+		while (!isStop) {
+			int selectJob = menuDisplay();
+			switch (selectJob) {
+			case 0 -> {
+				isStop = true;
+			}
+			case 1 -> {
+				deviceCheck();
+			}
+//			case 2->{
+//				System.out.print("조회할 직원번호>>");
+//				int empid = sc.nextInt();
+//				EmpView.print(empService.selectById(empid), "특정직원조회");	 
+//			}
+//			case 3->{
+//				System.out.print("조회할 부서번호>>");
+//				int deptid = sc.nextInt();
+//				EmpView.print(empService.selectBydept(deptid), "특정부서직원조회");	 
+//			}
+//			case 4->{
+//				System.out.print("조회할 JOB(예,IT_PROG)>>");
+//				String  jobid = sc.next();
+//				EmpView.print(empService.selectByJob(jobid), "특정Job직원조회");	 
+//			}
+//			case 5->{
+//				System.out.print("조회할 (부서/직책/입사일/급여)>>");
+//				int deptid = sc.nextInt();
+//				String jobid = sc.next();
+//				Date hdate = DateUtil.getSQLDate(sc.next()); //0000-00-00
+//				int salary = sc.nextInt();
+//				EmpView.print(empService.selectByCondition(deptid, jobid, hdate, salary),"(부서/직책/입사일/급여)조건조회");	 
+//			}
+//			case 6->{
+//				EmpDTO emp = insertMenu();
+//				int result = empService.empInsert(emp);
+//				EmpView.print(result>0?"입력성공":"입력실패");
+//			}
+//			case 7->{
+//				EmpDTO emp = insertMenu();
+//				int result = empService.empUpdate(emp);
+//				EmpView.print(result>0?"수정성공":"수정실패");
+//			}
+//			case 8->{
+//				System.out.println("삭제할 직원번호>>");
+//				int empid = sc.nextInt();
+//				int result = empService.empDelete(empid);
+//				EmpView.print(result>0?"삭제성공":"삭제실패");
+//			}
+//			case 9->{
+//				System.out.println("조회할 직원번호>>");
+//				int empid = sc.nextInt();
+//				//모든 칼럼이면 DTO, (이름, job, salary)만 가져오기
+//				Map<String, Object> emp = empService.empInfo(empid);
+//				EmpView.print(emp);
+//			}
+//			case 10->{
+//				System.out.println("조회할 직원번호>>");
+//				int empid = sc.nextInt();
+//				double result = empService.callFunction(empid);
+//				EmpView.print("직원의 보너스: "+ result);
+//			}
+			default -> {
+			}
+			}
+		}
+		System.out.println("========END=========");
+	}
+
+	private static String loginDisplay() {
+		System.out.println("=======로그인=======");
+		System.out.println("아이디 입력:");
+		String user_id = sc.next();
+		System.out.println("비밀번호 입력:");
+		String password = sc.next();
+		return loginDAO.login(user_id, password);
+		
+	}
+
+	private static void deviceCheck() {
+		System.out.println();
+
+	}
+
+	private static int startDisplay() {
+		System.out.println("=======시작=======");
+		System.out.println("1.로그인");
+		System.out.println("2.회원가입");
+		System.out.println("0.종료");
+		System.out.print("작업선택>>");
+		int job = sc.nextInt();
+		System.out.println("================");
+		return job;
+	}
+	
+
+
+	private static EmpDTO insertMenu() {
+		System.out.println("EMPLOYEE_ID>>");
+		int empid = sc.nextInt();
+		System.out.println("FIRST_NAME>>");
+		String fname = sc.next();
+		System.out.println("LAST_NAME>>");
+		String lname = sc.next();
+		System.out.println("EMAIL>>");
+		String email = sc.next();
+		System.out.println("PHONE_NUMBER>>");
+		String phone = sc.next();
+		System.out.println("HIRE_DATE>>");
+		Date hdate = DateUtil.getSQLDate(sc.next());
+		System.out.println("JOB_ID>>");
+		String job_id = sc.next();
+		System.out.println("SALARY>>");
+		int sal = sc.nextInt();
+		System.out.println("COMMISSION_PCT>>");
+		double comm = sc.nextDouble();
+		System.out.println("MANAGER_ID>>");
+		int mid = sc.nextInt();
+		System.out.println("DEPARTMENT_ID>>");
+		int deptid = sc.nextInt();
+
+		EmpDTO emp = new EmpDTO();
+		emp.setCommission_pct(comm);
+		emp.setDepartment_id(deptid);
+		emp.setEmail(email);
+		emp.setEmployee_id(empid);
+		emp.setFirst_name(fname);
+		emp.setLast_name(lname);
+		emp.setHire_date(hdate);
+		emp.setJob_id(job_id);
+		emp.setSalary(sal);
+		emp.setPhone_number(phone);
+		emp.setManager_id(mid);
+
+		return emp;
+	}
+
+	private static int menuDisplay() {
+		System.out.println("================");
+		System.out.println("1.등록 디바이스 확인");
+		System.out.println("2.디바이스on/off");
+		System.out.println("3.동작시간 예약/취소");
+		System.out.println("4.디바이스 추가/삭제");
+		System.out.println("5.디바이스 활동로그 확인");
+		System.out.println("0.종료");
+		System.out.print("작업선택>>");
+		int job = sc.nextInt();
+		System.out.println("================");
+		return job;
+
+	}
+}

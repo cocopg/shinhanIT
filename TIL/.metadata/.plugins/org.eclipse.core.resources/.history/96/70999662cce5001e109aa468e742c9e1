@@ -1,0 +1,7 @@
+package com.shinhan.day06.lab;
+
+public class Activity {
+	public void onCreate() {
+		System.out.println("기본적인 실행내용");
+	}
+}

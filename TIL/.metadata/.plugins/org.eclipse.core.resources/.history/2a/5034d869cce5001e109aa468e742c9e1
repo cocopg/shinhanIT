@@ -1,0 +1,14 @@
+package com.shinhan.day06.lab;
+
+public class MainActivity {
+
+	public static void main(String[] args) {
+
+		@Override
+		public void onCreate() {
+			super.onCreate();
+			System.out.println("추가적인 실행 내용");
+		}
+
+	}
+}

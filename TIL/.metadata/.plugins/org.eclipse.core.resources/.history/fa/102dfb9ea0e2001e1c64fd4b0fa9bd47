@@ -1,0 +1,12 @@
+package com.shinhan.day04;
+
+public class NoteBookTest {
+
+	public static void main(String[] args) {
+		NoteBook note1 = new NoteBook("A",100);
+		NoteBook note2 = new NoteBook("B",200);
+		NoteBook note3 = new NoteBook("B",300);
+
+	}
+
+}

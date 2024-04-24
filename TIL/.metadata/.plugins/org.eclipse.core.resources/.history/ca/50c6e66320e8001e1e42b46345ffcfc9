@@ -1,0 +1,17 @@
+package com.shinhan.day09generic;
+
+public class GenericTest {
+	public static void main(String[] args) {
+		f1();
+	}
+
+	private static void f1() {
+		//<>안에는 기본형은 안들어감.
+		Box<String, Integer> box1 = new Box<>("컴퓨터1", 100);
+		System.out.println(box1);
+		
+		Box<Integer, String>Box2 = new Box<>(123,"Large");
+		System.out.println(box2);
+		
+	}
+}

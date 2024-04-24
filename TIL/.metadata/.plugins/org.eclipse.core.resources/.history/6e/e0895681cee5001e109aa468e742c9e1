@@ -1,0 +1,10 @@
+package com.shinhan.day06.lab;
+
+public abstract class Machine {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

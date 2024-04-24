@@ -1,0 +1,89 @@
+package com.shinhan.day05;
+
+import java.util.Scanner;
+
+public class BankApplication {
+	String accNum;
+	String accNm;
+	int balance;
+
+	public BankApplication(String accNum, String accNm, int balance) {
+		super();
+		this.accNum = accNum;
+		this.accNm = accNm;
+		this.balance = balance;
+		System.out.println("계좌가 생성되었습니다.");
+	}
+
+	public void save(int amount) {
+		balance += amount;
+	}
+
+	public int withdraw(int amount) {
+		if (balance >= amount) {
+			balance -= amount;
+			System.out.println("출금이 성공되었습니다.");
+			return amount;
+		} else {
+			System.out.println("잔고가 부족합니다.");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		boolean isGo = true;
+		Account[] arr = new Account[5];
+		int index = 0;
+
+		while (isGo) {
+			menuPrint();
+			System.out.print("선택>");
+			int job = sc.nextInt();
+			switch (job) {
+			case 1:
+				menuPrint("계좌생성");
+				if (index == arr.length) {
+					System.out.println("더이상 계좌생성 불가");
+					break;
+				}
+				System.out.println("---------");
+				System.out.println("계좌 생성");
+				System.out.println("---------");
+				if (index == arr.length) {
+					System.out.println("더이상 게좌 생성 불가하다");
+					break;
+				}
+
+				System.out.print("계좌번호>");
+				String accNum = sc.next();
+				System.out.print("계좌주");
+				String accNm = sc.next();
+				System.out.print("초기입금금액");
+				int balance = sc.nextInt();
+
+				arr[index++] = new Account(accNum, accNm, balance);
+				break;
+			case 2:
+				menuPrint("계좌목록");
+				for (Account acc : arr) {
+					if (acc == null)
+						break;
+					System.out.printf("%10s %10s %10d", acc.accNum, acc.accNm, acc.balance);
+				}
+			}
+		}
+		sc.close();
+	}
+
+	private static void menuPrint(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void menuPrint() {
+		System.out.println("-----------------------------------");
+		System.out.println("1.계좌생성|2.계좌목록|3.예금|4.출금|5.종료");
+		System.out.println("-----------------------------------");
+	}
+}

@@ -1,0 +1,13 @@
+package com.shinhan.day06.lab;
+
+public abstract class Machine {
+
+	void powerOn() {}
+	void powerOff() {}
+	abstract void work();
+
+	}
+
+	abstract class Computer extends Machine{
+		
+	}

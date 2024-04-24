@@ -1,0 +1,12 @@
+package com.shinhan.day04;
+
+public class PersonTest {
+
+	public static void main(String[] args) {
+		Person p1 = new Person(100,"철수");
+		Person p2 = new Person(200,"영희");
+		Person p3 = new Person(300,"영희");
+
+	}
+
+}

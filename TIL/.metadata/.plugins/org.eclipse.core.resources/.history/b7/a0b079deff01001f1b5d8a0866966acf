@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+$(function(){
+	$("button:nth-of-type(1)").on("click", f1);
+	$("button:nth-of-type(2)").on("click", f2);
+	$("button:nth-of-type(3)").on("click", f3);
+	$("button:nth-of-type(4)").on("click", f4);
+	$("button:nth-of-type(5)").on("click", f5);
+	
+});
+
+function f5(){
+	var xhr = new XMLHttpRequest();	
+	xhr.onreadystatechange = function(){
+		var obj = JSON.parse(xhr.responseText);
+		var arr = obj.emplist;
+		var output = "";
+		$.each(arr, function(index, item){
+			output += `<tr> <td>${item.no}</td>
+				<td>${item.name}</td>
+				<td>${item.capital}</td>
+				<td>${item.region}</td></tr>`
+		});	
+		$("#data-table").html(output);
+	};
+	xhr.open("get","emplist2.jsp", true); //true->비동기 (생략가능)
+	xhr.send(); 
+}
+
+
+
+function f4(){
+	var xhr = new XMLHttpRequest();	
+	xhr.onreadystatechange = function(){
+		$("#data-table").html(xhr.responseText);
+	};
+	xhr.open("get","emplist.jsp", true); //true->비동기 (생략가능)
+	xhr.send(); 
+}
+
+
+
+
+function f3(){
+	var xhr = new XMLHttpRequest();	
+	xhr.onreadystatechange = function(){
+		//서버로 전송하기전, 후를 체크하여 원하는 data를 받을수 있다. 
+		console.log(xhr.readyState);
+		if(xhr.readyState==4 && xhr.status==200){
+			var obj = JSON.parse(xhr.responseText);
+			var arr = obj.nations;			
+			var output = "";			
+			$.each(arr, function(index, item){
+				output += `<tr> <td>${item.no}</td>
+								<td>${item.name}</td>
+								<td>${item.capital}</td>
+								<td>${item.region}</td></tr>`
+			});	
+			$("#data-table").html(output);
+			
+		}else if(xhr.status==404){
+			$("#here").html( "존재하지 않는 페이지입니다.");
+		}
+	};
+	xhr.open("get","data.json", true); //true->비동기 (생략가능)
+	xhr.send(); 
+	 
+	
+}
+
+function f2(){
+	var xhr = new XMLHttpRequest();	
+	xhr.onreadystatechange = function(){
+		//서버로 전송하기전, 후를 체크하여 원하는 data를 받을수 있다. 
+		console.log(xhr.readyState);
+		if(xhr.readyState==4 && xhr.status==200){
+			var s = $("#here").html();
+			$("#here").html( s + xhr.responseText);
+		}else if(xhr.status==404){
+			$("#here").html( "존재하지 않는 페이지입니다.");
+		}
+	};
+	xhr.open("get","11-17.html", true); //true->비동기 (생략가능)
+	xhr.send(); 
+	$("#here").html("--------------<hr>");
+}
+
+
+function f1(){
+	var xhr = new XMLHttpRequest();
+	xhr.open("get","11-17.html", false); //false->동기 true->비동기 
+	xhr.send(); //동기이면 요청하고 응답이 올때까지 기다린다. 
+	//비동기이면 서버에서의 응답을 기다리지않고 아래 문장으로 이동한다. 
+	//alert(xhr.responseText);
+	//console.log(xhr.responseText);
+	$("#here").html(xhr.responseText);
+}
+
+
+</script>
+</head>
+<body>
+<h1>Ajax연습</h1>
+<button>js이용1(동기통신)</button>
+<button>js이용2(비동기통신)</button>
+<button>js이용3(비동기통신 JSON)</button>
+<button>js이용4(JSP)</button>
+<button>js이용5(JSON)</button>
+<hr>
+<div id="here">
+  <table border="1">
+    <thead>
+       <tr><th>no</th><th>name</th><th>capital</th><th>region</th></tr>
+    </thead>
+    <tbody id="data-table">
+    
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

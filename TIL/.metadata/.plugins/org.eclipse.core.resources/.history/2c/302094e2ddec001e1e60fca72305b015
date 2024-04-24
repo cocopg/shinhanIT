@@ -1,0 +1,17 @@
+package com.shinhan.day13;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class SportsMan {
+	public static void main(String[] args) {
+	  HashMap<String, String> location = new HashMap<String, String>();
+	  location.put("home", "Daejeon");
+	  location.put("office", "Seoul");
+	  for(  String key :loaction){
+	      System.out.println(key + “=>” + location.get(key));
+	  }
+	  
+	}
+}

@@ -1,0 +1,13 @@
+package com.shinhan.day09generic;
+
+public class GenericTest {
+	public static void main(String[] args) {
+		f1();
+	}
+
+	private static void f1() {
+		Box<String, Integer> box1 = new Box<>("컴퓨터1", 100);
+		System.out.println(box1);
+		
+	}
+}

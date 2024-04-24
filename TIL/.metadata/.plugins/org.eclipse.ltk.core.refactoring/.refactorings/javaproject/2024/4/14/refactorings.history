@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.shinhan.util&apos; to &apos;jdbcproject/src/com.shinhan.day15&apos;&#x0D;&#x0A;- Original project: &apos;javaproject&apos;&#x0D;&#x0A;- Destination element: &apos;jdbcproject/src/com.shinhan.day15&apos;&#x0D;&#x0A;- Original element: &apos;javaproject/src/com.shinhan.util&apos;" description="Copy package" destination="=jdbcproject/src&lt;com.shinhan.day15" element1="/src&lt;com.shinhan.util" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1712043813172" version="1.0"/>
+</session>

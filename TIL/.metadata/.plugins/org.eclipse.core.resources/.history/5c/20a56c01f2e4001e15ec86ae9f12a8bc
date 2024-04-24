@@ -1,0 +1,28 @@
+package com.shinhan.day05;
+
+import java.util.Scanner;
+
+public class BankApplication {
+	Account[] Account = new Account[100];
+	String accNum;
+	String accNm;
+	int balance;
+	
+	public BankApplication(String accNum, String accNm, int balance) {
+		super();
+		this.accNum = accNum;
+		this.accNm = accNm;
+		this.balance = balance;
+	}
+
+
+
+
+
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+	}
+}

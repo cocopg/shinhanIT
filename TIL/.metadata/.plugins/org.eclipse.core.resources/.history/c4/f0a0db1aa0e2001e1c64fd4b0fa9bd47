@@ -1,0 +1,7 @@
+package com.shinhan.day04;
+
+public class NoteBook {
+	
+	private String model;
+	private int price;
+}

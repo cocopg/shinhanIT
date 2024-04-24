@@ -1,0 +1,16 @@
+package com.shinhan.day04;
+
+public class Person {
+	int numberOfPerson;
+	int age;
+	String name = "Anonymous";
+	
+	public Person(int age, String name) {
+		this.age = age;
+		this.name = name;
+	}
+	public void selfIntorduce(){
+		System.out.printf("내 이름은 %d이며, 나이는 %d살 입니다.",name, age);
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.shinhan.day05;
+
+import java.util.Scanner;
+
+public class BankApplication {
+	String[] Account;
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner;
+	}
+}

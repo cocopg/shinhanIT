@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JavaScript 연습</h1>
+    <button onclick="call1()">변수에 대하여1</button>
+    <button onclick="call2()">변수에 대하여2</button>
+    <button onclick="call3()">논리연산자</button><br>
+    점수:<input type="number" id="score" value="100">
+    <button onclick="call4()">조건문</button>
+    <button onclick="call5()">반복문</button>
+    <button onclick="call6()">구구단</button>
+    <button onclick="call7()">호이스팅</button>
+    <button onclick="call8()">Return있는 함수</button>
+    <button onclick="call9()">이름있는 함수</button>
+    <hr>
+    <div id="here">여기</div>
+</body>
+<script>
+    //1.선언적 함수 - 이름이 있는 함수
+    var v1 = 300; //지역변수
+    v2 = 400; //글로벌변수
+    function call1(){
+        document.getElementById("here").innerHTML = "변수선언";
+        var a = 100; //함수내에서 지역변수
+        b = 200; //var이 없으면 글로벌변수
+    };
+
+    function call2(){
+        document.
+        getElementById("here").innerHTML = b;
+    };
+    function call3(){
+        var a = 100, b = 10;
+        var result = a < 100 && ++b > 10;
+        var result2 = a >= 100 || ++b > 10;
+        document.getElementById("here").innerHTML = result + "==>" + b + ":";
+    };
+
+    function call4(){
+        //사용자에게 점수 입력받아 학점 출력
+        var grade;
+        var score = document.getElementById("score").value;
+        if(score>=90 && score<=100){
+            grade = "A";
+        }else if(score<=89 && score>=80){
+            grade = 'B'
+        }else if(score<=79 && score>=70){
+            grade = 'c'
+        }else if(score<=69 && score>=60){
+            grade = 'd'
+        }else {
+            grade= 'e'
+        }
+        document.getElementById("here").innerHTML = grade;
+
+        switch(score/10){
+            case 9 : grade = "A"; break;
+            case 8: grade ="B"; break;
+            case 7: grade ="C"; break;
+            case 6: grade ="D"; break;
+            case 5: grade ="F"; break;
+        }
+            
+    };
+
+    function call5(){
+        {
+            let a = 100;
+            var b = 200;
+            console.log(a+b);
+        }
+        console.log(b);
+        
+        var su = document.querySelector("#score").value;
+        var total = 0;
+        //block내에서만 유효한 변수(scope) : let
+        for(var i=1; i<=su; i++){
+            total+=i;
+        }
+        document.getElementById("here").innerHTML = "1~" + su + "까지의 합계 =" + total + " 쉬었다해요";
+        console.log("var는 지역변수, 함수내에서 사용가능:" + i);
+    };
+
+    function call6(){
+        var output = "";
+        for(let gop = 1; gop<=9;gop++){
+            if(gop==4){
+                continue;
+            }
+            for(let dan=2; dan<=9; dan++){
+                output += `${dan} * ${gop} = ${gop*dan}&nbsp;&nbsp;&nbsp`;
+            }
+            output += "<br>";
+        }
+        document.getElementById("here").innerHTML = output;
+    }
+
+    //자바스크립트는 var과 function을 맨 위로 끌어올린다.
+    console.log("js1=" + js1);
+    var js1 = 100;
+    console.log("js1=" + js1);
+
+    function call7(){
+        console.log("js2=" + js2);
+        var js2 = 200;
+        console.log("js2=" + js2);
+        alert(js1+js2);
+
+        const js3 = 300;
+        // js3 = 400; 상수는 값 변경 불가
+        let js4 = 400;
+        js4 = 500; //재할당은 가능
+        // let js4 = "자바스크립트"; 재선언 불가
+    }
+
+    function call8(){
+        var result = sum(1,10);
+        here.innerHTML = result;
+    }
+    function sum(start, end){
+        var total = 0;
+        for(let i = start; i<=end; i++){
+            total += i;
+        }
+        return total;
+    }
+
+    function call9(){
+        //내부함수
+        innerFuntion();
+        function innerFunction(){
+
+        }
+
+        //익명함수
+        var f1 = function(a,b){
+            console.log("나는 이름이 없어...ㅠㅠ" + (a+b));
+            return a+b;
+        };
+        var result = f1(10,20);//인수를 주고 호출한다. 함수의 매개변수가 값을 받는다.
+        console.log("받은값: " + result);
+    }
+    //즉시실행함수
+    var result2 = (function(a,b){
+        console.log("익명함수 : 이름없네?ㅋ" + (a+b));
+        return a+b;
+    })(30,40);
+    console.log("받은값2 :" + result2);
+
+    //2.익명함수 - 이름이 없는 함수
+    f = function(){
+
+    };
+</script>
+</html>

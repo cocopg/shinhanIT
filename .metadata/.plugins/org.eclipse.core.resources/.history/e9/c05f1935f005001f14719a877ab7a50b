@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>직원목록</h1>
+	<table>
+		<thead>
+			<tr>직원번호
+			</tr>
+			<tr>이름
+			</tr>
+			<tr>성
+			</tr>
+			<tr>이메일
+			</tr>
+			<tr>전화번호
+			</tr>
+			<tr>직책
+			</tr>
+			<tr>급여
+			</tr>
+			<tr>부서
+			</tr>
+			<tr>매니저
+			</tr>
+			<tr>커미션
+			</tr>
+			<tr>입사일
+			</tr>
+		</thead>
+	</table>
+</body>
+</html>

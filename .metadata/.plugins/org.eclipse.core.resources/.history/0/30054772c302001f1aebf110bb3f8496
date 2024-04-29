@@ -1,0 +1,12 @@
+package com.shinhan.controller;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+public class DeptDetailController {
+
+	@WebServlet({ "/emp/empDetail" })
+	public class EmpDetailController extends HttpServlet {
+		private static final long serialVersionUID = 1L;
+
+}

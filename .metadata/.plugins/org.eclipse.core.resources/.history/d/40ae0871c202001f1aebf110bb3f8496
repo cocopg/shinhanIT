@@ -1,0 +1,87 @@
+package com.shinhan.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.shinhan.emp.EmpDTO;
+import com.shinhan.emp.EmpService;
+
+/**
+ * Servlet implementation class FirstServlet
+ * 
+ * @webServlet : 주소창에서 요청시 mapping주소
+ */
+@WebServlet({ "/emp/empDetail" })
+public class EmpDetailController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public EmpDetailController() {
+		super();
+		System.out.println("FirstServlet생성자");
+		// TODO Auto-generated constructor stub
+	}
+
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("FirstServlet init(초기화)");
+	}
+
+	public void distroy() {
+		System.out.println("FirstServlet 소멸자");
+		// doGet, doPost()코드를 모두 해야하는 경우
+	}
+
+//	@Override
+//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		System.out.println("================service================");
+//		System.out.println(req.getMethod() + "요청");
+//	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("====get요청====");
+		
+		EmpService eService = new EmpService();
+		String empid = request.getParameter("empid");
+		if(empid==null) return;
+			int i_empid = Integer.parseInt(empid);
+			EmpDTO emp = eService.selectById(i_empid);
+			System.out.println(emp);
+			
+			//요청문서에 data를 저장한다.
+			request.setAttribute("empInfo", emp);
+			
+			//java code는 servlet담당 --비즈니스 로직 수행 후
+			//view(html)는 jsp담당 --jsp에 넘긴다.	
+			
+			//브라우저가 요청한 걸 서블릿이 받고 jsp에게 위임함(forward)
+			RequestDispatcher rd = request.getRequestDispatcher("empDetail.jsp");
+			rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String addr = request.getRemoteAddr();
+		System.out.println("FirstServlet post요청" + addr);
+		System.out.println("userid: " + request.getParameter("userid"));
+		doGet(request, response);
+	}
+
+}

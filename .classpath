@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="day10/lab/" kind="src" path="TIL/java"/>
-	<classpathentry kind="src" path="TIL/java/day10/lab"/>
-	<classpathentry kind="src" path="TIL/study"/>
-	<classpathentry kind="lib" path="TIL/webapp/WEB-INF/lib/ojdbc6_g.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

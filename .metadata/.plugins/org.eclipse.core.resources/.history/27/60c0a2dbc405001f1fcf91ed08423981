@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="/action_page.php">
+  <div class="mb-3 mt-3">
+    <label for="email" class="form-label">직원번호:</label>
+    <input type="number" class="form-control" id="employee_id" placeholder="Enter employee_id" name="employee_id">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

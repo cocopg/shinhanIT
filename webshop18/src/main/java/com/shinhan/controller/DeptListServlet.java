@@ -19,17 +19,14 @@ import com.shinhan.dept.DeptService;
 @WebServlet("/dept/deptList.do")
 public class DeptListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DeptService dservice = new DeptService();
-		List<DeptDTO> deptlist = dservice.selectAll();
-		System.out.println(deptlist.size() + "건 조회됨");
-		request.setAttribute("deptlist", deptlist);
+		DeptService dService = new DeptService();
+		List<DeptDTO> deptList = dService.selectAll();
+		request.setAttribute("deptList", deptList);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("deptList.jsp");
-		rd.forward(request, response);
-		
-	}
-
+		RequestDispatcher rd=request.getRequestDispatcher("deptList.jsp");
+		rd.forward(request,response);
+	} 
 
 }

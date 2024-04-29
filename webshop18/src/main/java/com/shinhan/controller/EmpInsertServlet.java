@@ -18,7 +18,6 @@ import com.shinhan.dept.DeptDTO;
 import com.shinhan.dept.DeptService;
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
-import com.shinhan.util.DBUtil;
 import com.shinhan.util.DateUtil;
 
 /**
@@ -27,52 +26,56 @@ import com.shinhan.util.DateUtil;
 @WebServlet("/emp/empInsert.do")
 public class EmpInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   		
-   		DeptService service = new DeptService();
-   		List<DeptDTO> dlist = service.selectAll();
-   		request.setAttribute("deptlist", dlist);
-   		
-   		EmpService eService = new EmpService();
-   		List<HashMap<String, Object>> mlist = eService.selectAllMng();
-   		request.setAttribute("mlist", mlist);
-   		
-   		EmpService jService = new EmpService();
-   		List<EmpDTO> jlist = jService.selectAll();
-   		request.setAttribute("jlist", jlist);
-   		
-   		RequestDispatcher rd = 
-   				request.getRequestDispatcher("empInsert.jsp");
-   	    rd.forward(request, response);
-   	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//요청문서에 내용을 담아서 온다. 자동 encoding안됨 
-		request.setCharacterEncoding("utf-8");//1문자가 3byte임을 설정 
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		DeptService service = new DeptService();
+		List<DeptDTO> dlist = service.selectAll();
+		// System.out.println(dlist.size()+"건");
+		request.setAttribute("deptlist", dlist);
+
+		EmpService eService = new EmpService();
+		List<HashMap<String, Object>> mlist = eService.selectAllManager();
+		request.setAttribute("mlist", mlist);
+
+		List<String> jlist = eService.selectAllJob();
+		request.setAttribute("jlist", jlist);
+
+		RequestDispatcher rd = request.getRequestDispatcher("empInsert.jsp");
+		rd.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 요청 문서에 내용을 담아서 온다. 자동 encoding 안됨
+		request.setCharacterEncoding("utf-8"); // 1문자가 3바이트임을 설정
+
 		EmpDTO emp = makeEmp(request);
 		EmpService service = new EmpService();
 		int result = service.empInsert(emp);
 		System.out.println(result + "건 입력됨");
 		request.setAttribute("message", result + "건 입력됨");
 
-		//jsp에 응답을 위임하는 경우(mvc2모델)
-		RequestDispatcher rd = 
-   				request.getRequestDispatcher("result.jsp");
-   	    rd.forward(request, response);
-		
-//		//servlet이 직접 응답하는경우
-//		response.setContentType("text/html;charset=utf-8");
-//		PrintWriter out = response.getWriter();
-//		out.write("<h1>서블릿이 직접 응답하는경우</h1>");
+		// 1) JSP에 응답을 위임하는 경우 (MVC2모델)
+		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+		rd.forward(request, response);
+
+		// 2) 서블릿이 직접 응답을 하는 경우
+		// response.setContentType("text/html;charset=utf-8");
+		// PrintWriter out = response.getWriter();
+		// out.write("<h1>서블릿이 직접 응답을 하는 경우</h1>");
 	}
+
 	private EmpDTO makeEmp(HttpServletRequest request) {
-		
-		//Enumeration : 한정된 값의 나열을 의미
+
+		// Enumeration: 한정된 값의 나열을 의미
 		Enumeration<String> colnames = request.getParameterNames();
-		while(colnames.hasMoreElements()) {
-			String col=colnames.nextElement();
-			System.out.println(col+"==>"+request.getParameter(col));
+		while (colnames.hasMoreElements()) {
+			String col = colnames.nextElement();
+			System.out.println(col + "=>" + request.getParameter(col));
 		}
-		
+
 		EmpDTO emp = new EmpDTO();
 		int empid = convertInt(request.getParameter("employee_id"));
 		int mid = convertInt(request.getParameter("manager_id"));
@@ -85,7 +88,7 @@ public class EmpInsertServlet extends HttpServlet {
 		String phone = request.getParameter("phone_number");
 		String job_id = request.getParameter("job_id");
 		Date hdate = DateUtil.getSQLDate(request.getParameter("hire_date"));
-		
+
 		emp.setCommission_pct(commission);
 		emp.setDepartment_id(did);
 		emp.setEmail(email);
@@ -100,14 +103,17 @@ public class EmpInsertServlet extends HttpServlet {
 		System.out.println(emp);
 		return emp;
 	}
+
 	private double convertDouble(String parameter) {
-		if(parameter==null) return 0;
+		if (parameter == "")
+			return 0;
 		return Double.parseDouble(parameter);
 	}
+
 	private int convertInt(String parameter) {
-		if(parameter==null) return 0;
+		if (parameter == "")
+			return 0;
 		return Integer.parseInt(parameter);
 	}
-	
 
 }

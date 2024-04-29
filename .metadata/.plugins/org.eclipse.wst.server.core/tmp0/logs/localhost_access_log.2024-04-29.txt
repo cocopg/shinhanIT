@@ -165,3 +165,10 @@
 0:0:0:0:0:0:0:1 - - [29/Apr/2024:14:17:40 +0900] "GET /webshop18/emp/empInsert.do HTTP/1.1" 500 5787
 0:0:0:0:0:0:0:1 - - [29/Apr/2024:14:18:47 +0900] "GET /webshop18/emp/empInsert.do HTTP/1.1" 500 3484
 0:0:0:0:0:0:0:1 - - [29/Apr/2024:14:22:59 +0900] "GET /webshop18/emp/empInsert.do HTTP/1.1" 500 3474
+127.0.0.1 - - [29/Apr/2024:15:44:07 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:44:08 +0900] "GET /webshop18/emp/empInsert.do HTTP/1.1" 500 3022
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:44:08 +0900] "GET /webshop18/emp/empInsert.do HTTP/1.1" 500 3767
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:54:13 +0900] "GET /webshop18/emp/empInsert.do HTTP/1.1" 200 4964
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:15:54:13 +0900] "GET /webshop18/js/jquery-3.7.1.min.js HTTP/1.1" 404 847
+127.0.0.1 - - [29/Apr/2024:17:34:51 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [29/Apr/2024:17:34:52 +0900] "GET /webshop18/WEB-INF/classes/com/shinhan/emp/EmpController.java HTTP/1.1" 404 721

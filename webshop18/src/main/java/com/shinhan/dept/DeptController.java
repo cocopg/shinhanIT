@@ -20,20 +20,21 @@ public class DeptController {
 			}
 			case 1 -> {
 				List<DeptDTO> deptlist = deptService.selectAll();
-				DeptView.print(deptlist,"모든직원조회");
+				DeptView.print(deptlist, "모든직원조회");
 			}
 			case 2 -> {
 				System.out.println("조회할 지역번호");
 				int locid = sc.nextInt();
-				DeptView.print(deptService.selectBylocid(locid),"특정직원조회");
+				DeptView.print(deptService.selectBylocid(locid), "특정직원조회");
 			}
-			default ->{}
+			default -> {
+			}
 			}
 
 		}
 		System.out.println("----------END----------");
 	}
-	
+
 //	private static DeptDTO insertMenu() {
 //		System.out.println("DEPARTMENT_ID>>");
 //		int empid = sc.nextInt();

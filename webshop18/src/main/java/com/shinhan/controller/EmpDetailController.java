@@ -62,7 +62,7 @@ public class EmpDetailController extends HttpServlet {
 
 		List<HashMap<String, Object>> mlist = eService.selectAllManager();
 		request.setAttribute("mlist", mlist);
-
+		
 		List<String> jlist = eService.selectAllJob();
 		request.setAttribute("jlist", jlist);
 

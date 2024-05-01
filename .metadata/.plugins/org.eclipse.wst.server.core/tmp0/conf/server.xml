@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\user\Desktop\g\Eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\user\Desktop\g\Eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\webproject" path="/webproject" reloadable="true" source="org.eclipse.jst.jee.server:webproject"/><Context docBase="C:\Users\user\Desktop\g\Eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\webshop18" path="/webshop18" reloadable="true" source="org.eclipse.jst.jee.server:webshop18"/></Host>
+      <Context docBase="C:\Users\President\Desktop\g\ㅎ공부\TIL\shinhanIT\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\President\Desktop\g\ㅎ공부\TIL\shinhanIT\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\webshop18" path="/webshop18" reloadable="true" source="org.eclipse.jst.jee.server:webshop18"/><Context docBase="C:\Users\President\Desktop\g\ㅎ공부\TIL\shinhanIT\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\webproject" path="/webproject" reloadable="true" source="org.eclipse.jst.jee.server:webproject"/></Host>
     </Engine>
   </Service>
 </Server>

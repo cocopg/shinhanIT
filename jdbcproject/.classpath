@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6_g.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/Desktop/g/eclipse/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Users/President/Desktop/g/ㅎ공부/TIL/shinhanIT/lib/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

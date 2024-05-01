@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.shinhan.dept.DeptDTO;
 import com.shinhan.dept.DeptService;
 
+import lombok.Getter;
+
 /**
  * Servlet implementation class DeptDetailController
  */

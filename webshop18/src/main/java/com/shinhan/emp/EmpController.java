@@ -28,12 +28,12 @@ public class EmpController {
 			case 2->{
 				System.out.print("조회할 직원번호>>");
 				int empid = sc.nextInt();
-				EmpView.print(empService.selectById(empid), "특정직원조회");	 
+				EmpView.print(empService.selectByID(empid), "특정직원조회");	 
 			}
 			case 3->{
 				System.out.print("조회할 부서번호>>");
 				int deptid = sc.nextInt();
-				EmpView.print(empService.selectBydept(deptid), "특정부서직원조회");	 
+				EmpView.print(empService.selectByDepartmentID(deptid), "특정부서직원조회");	 
 			}
 			case 4->{
 				System.out.print("조회할 JOB(예,IT_PROG)>>");

@@ -6,14 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-//VO (Value Object)
-//DTO(Data Transfer Object)
-//JavaBeans 기술에서 이용(JSP, Spring, MyBatis는 javabeans 기술 이용)
-
-@Getter
-@Setter
-@ToString
+// VO(Value Object)
+// DTO(Data Transfer Object)
+// JavaBeans기술에서 이용(JSP, Spring, Mybatis)
+@Getter@Setter@ToString
 public class EmpDTO {
+
 	private int employee_id;
 	private String first_name;
 	private String last_name;

@@ -1,0 +1,18 @@
+package com.shinhan.dept;
+
+import java.util.List;
+
+import com.shinhan.emp.EmpDTO;
+
+public class DeptView {
+	
+	public static void print(List<DeptDTO> deptlist, String title) {
+		System.out.printf("================%s==============\n", title);
+		if(deptlist.size()<0)
+			System.out.println("땡 다시");
+		else 
+			deptlist.stream().forEach(emp -> System.out.println(emp));
+
+	}
+
+}

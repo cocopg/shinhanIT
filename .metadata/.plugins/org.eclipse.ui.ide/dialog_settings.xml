@@ -33,6 +33,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\user\Desktop\g\Eclipse-workspace"/>
 			<item value="C:\Users\user\Desktop\g\TIL\TIL\webshop\src\main\java\com\shinhan\controller"/>
 			<item value="C:\Users\user\Desktop\g\TIL\TIL\webproject\src\main\webapp\day08"/>
 			<item value="C:\Users\user\Desktop\g\TIL\TIL\webapp\day05"/>

@@ -1,9 +1,4 @@
-INDEX VERSION 1.4+C:\Users\President\Desktop\g\¤¾°øºÎ\TIL\shinhanIT\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2908561525.index
-3956043099.index
-1238391496.index
+INDEX VERSION 1.4+C:\Users\user\Desktop\g\Eclipse-workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2582384556.index
 995298387.index
-3372714456.index
-3882472928.index
-3132673816.index
-3466056606.index
+2908561525.index

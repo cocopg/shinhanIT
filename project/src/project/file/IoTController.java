@@ -242,33 +242,21 @@ public class IoTController {
 	}
 
 	private static DevDTO insertMenu() {
-		System.out.println("-----------------");
-		System.out.println("  디바이스 on/off");
-		System.out.println("-----------------");
-		System.out.print("기기명을 입력하세요>>");
-		String deviceid = sc.next();
-//		System.out.println("Manufacture>>");
-//		String manuf = sc.next();
-//		System.out.println("D_type>>");
-//		String dtype = sc.next();
-//		System.out.println("Regist_Date>>");
-//		Date rdate = DateUtil.getSQLDate(sc.next());
-//		System.out.println("Room_Name>>");
-//		String rname = sc.next();
-		System.out.print("상태변경>>");
-		String status = sc.next();
-//		System.out.println("User_ID>>");
-//		String userid = sc.next();
+	    System.out.println("-----------------");
+	    System.out.println("  디바이스 on/off");
+	    System.out.println("-----------------");
+	    System.out.print("기기명을 입력하세요>>");
+	    String deviceid = sc.next();
+	    System.out.print("상태변경>>");
+	    String statusInput = sc.next();
 
-		DevDTO device = new DevDTO();
-		device.setDevice_id(deviceid);
-//		device.setManufacture(manuf);
-//		device.setD_type(dtype);
-//		device.setRegist_date(rdate);
-//		device.setRoom_name(rname);
-		device.setStatus(status);
-//		device.setUser_id(userid);
-		return device;
+	    // status 값이 "On"이면 1로, "Off"이면 0으로 변환
+	    int statusValue = statusInput.equalsIgnoreCase("On") ? 1 : 0;
+
+	    DevDTO device = new DevDTO();
+	    device.setDevice_id(deviceid);
+	    device.setStatus(String.valueOf(statusValue)); // status 값을 문자열로 변환하여 저장
+	    return device;
 	}
 
 	private static int menuDisplay() {

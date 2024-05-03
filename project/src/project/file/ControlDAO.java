@@ -23,183 +23,6 @@ public class ControlDAO {
 	PreparedStatement pst; // Statement를 상속받음, 바인딩변수 지원
 	ResultSet rs;
 	static Scanner sc = new Scanner(System.in);
-
-//	// 8.삭제(Delete)
-//	public int empDelete(int empid) {
-//		int result = 0;
-//		String sql = "delete from employees" + " where EMPLOYEE_ID=?";
-//		conn = DBUtil.dbConnection();
-//		try {
-//
-//			pst = conn.prepareStatement(sql);
-//			pst.setInt(1, empid);
-//			result = pst.executeUpdate(); // DML문장은 executeUpdate, select문은 executeQuery
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, pst, rs);
-//		}
-//		return result;
-//	}
-//
-//	// 7.수정(Update)
-//	public int empUpdate(EmpDTO emp) {
-//		int result = 0;
-//		String sql = "update employees\r\n" + "set FIRST_NAME=?\r\n" + "LAST_NAME=?\r\n" + "EMAIL=?\r\n"
-//				+ "PHONE_NUMBER=?\r\n" + "HIRE_DATE=?\r\n" + "JOB_ID=?\r\n" + "SALARY=?\r\n" + "COMMISSION_PCT=?\r\n"
-//				+ "MANAGER_ID=?\r\n" + "DEPARTMENT_ID=?\r\n" + "where EMPLOYEE_ID=?";
-//		conn = DBUtil.dbConnection();
-//		try {
-//
-//			pst = conn.prepareStatement(sql);
-//			pst.setInt(11, emp.getEmployee_id());
-//			pst.setString(1, emp.getFirst_name());
-//			pst.setString(2, emp.getLast_name());
-//			pst.setString(3, emp.getEmail());
-//			pst.setString(4, emp.getPhone_number());
-//			pst.setDate(5, emp.getHire_date());
-//			pst.setString(6, emp.getJob_id());
-//			pst.setInt(7, emp.getSalary());
-//			pst.setDouble(8, emp.getCommission_pct());
-//			pst.setInt(9, emp.getManager_id());
-//			pst.setInt(10, emp.getDepartment_id());
-//			result = pst.executeUpdate(); // DML문장은 executeUpdate, select문은 executeQuery
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, pst, rs);
-//		}
-//		return result;
-//	}
-//
-//	// 6.입력(insert)
-//	public int empInsert(EmpDTO emp) {
-//		int result = 0;
-//		String sql = "insert into employees values(?,?,?,?,?,?,?,?,?,?,?)";
-//		conn = DBUtil.dbConnection(); // setAutoCommit(true)되어있
-//		try {
-//
-//			pst = conn.prepareStatement(sql);
-//			pst.setInt(1, emp.getEmployee_id());
-//			pst.setString(2, emp.getFirst_name());
-//			pst.setString(3, emp.getLast_name());
-//			pst.setString(4, emp.getEmail());
-//			pst.setString(5, emp.getPhone_number());
-//			pst.setDate(6, emp.getHire_date());
-//			pst.setString(7, emp.getJob_id());
-//			pst.setInt(8, emp.getSalary());
-//			pst.setDouble(9, emp.getCommission_pct());
-//			pst.setInt(10, emp.getManager_id());
-//			pst.setInt(11, emp.getDepartment_id());
-//			result = pst.executeUpdate(); // DML문장은 executeUpdate, select문은 executeQuery
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, pst, rs);
-//		}
-//		return result;
-//	}
-//
-//	// 5.다양한 조건으로 조회하기
-//	// 부서별(=), 직책별(=), 입사일별(>=), 급여(>=)
-//	public List<EmpDTO> selectByCondition(int deptid, String jobid, Date hdate, int salary) {
-//		List<EmpDTO> emplist = new ArrayList<EmpDTO>();
-//		String sql = "select *" + " from employees" + " where department_id = ?" + " and job_id = ?"
-//				+ " and hire_date >= ?" + " and salary >= ?";
-//		conn = DBUtil.dbConnection();
-//		try {
-//			pst = conn.prepareStatement(sql);
-//			pst.setInt(1, deptid);
-//			pst.setString(2, jobid);
-//			pst.setDate(3, hdate);
-//			pst.setInt(4, salary);
-//			rs = pst.executeQuery();
-//			while (rs.next()) {
-//				EmpDTO emp = makeEmp(rs);
-//				emplist.add(emp);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, pst, rs);
-//		}
-//		return emplist;
-//
-//	}
-//
-//	// 4.특정JOB인 직원조회
-//	public List<EmpDTO> selectByJob(String jobid) {
-//		List<EmpDTO> emplist = new ArrayList<EmpDTO>();
-//		String sql = "select * from employees where job_id = ?";
-//		conn = DBUtil.dbConnection();
-//		try {
-//			pst = conn.prepareStatement(sql);
-//			pst.setString(1, jobid);// 첫번째?에 jobid를 넣어라
-//			rs = pst.executeQuery();
-//			while (rs.next()) {
-//				EmpDTO emp = makeEmp(rs);
-//				emplist.add(emp);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, pst, rs);
-//		}
-//		return emplist;
-//
-//	}
-//
-//	// 3.특정부서의 직원모두조회
-//	public List<EmpDTO> selectBydept(int deptid) {
-//		List<EmpDTO> emplist = new ArrayList<EmpDTO>();
-//		String sql = "select * from employees where department_id =?";
-//		conn = DBUtil.dbConnection();
-//		try {
-//			pst = conn.prepareStatement(sql);
-//			pst.setInt(1, deptid);
-//			rs = pst.executeQuery();
-//			while (rs.next()) {
-//				EmpDTO emp = makeEmp(rs);
-//				emplist.add(emp);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, st, rs);
-//		}
-//		return emplist;
-//
-//	}
-//
-//	// 2.특정직원의 상세보기
-//	public EmpDTO selectById(int empid) {
-//		EmpDTO emp = null;
-//		String sql = "select * from employees where employee_id = " + empid;
-//		conn = DBUtil.dbConnection();
-//		try {
-//
-//			st = conn.createStatement();
-//			rs = st.executeQuery(sql);
-//			if (rs.next()) {
-//				emp = makeEmp(rs);
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return emp;
-//	}
-
-	// 특정기기 활동로그
 	
 	public List<LogDTO> deviceLog(LogDTO device) {
 		List<LogDTO> devLoglist = new ArrayList<LogDTO>();
@@ -284,14 +107,18 @@ public class ControlDAO {
 		conn = DBUtil.dbConnection(); // setAutoCommit(true)되어있
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, device.getDevice_id());
-			pst.setString(2, device.getManufacture());
-			pst.setString(3, device.getD_type());
-			pst.setDate(4, new Date(System.currentTimeMillis()));
-			pst.setString(5, device.getStatus());
-			pst.setString(6, device.getRoom_name());
-			pst.setString(7, device.getUser_id());
-			result = pst.executeUpdate();
+	        pst.setString(1, device.getDevice_id());
+	        pst.setString(2, device.getManufacture());
+	        pst.setString(3, device.getD_type());
+	        pst.setDate(4, new Date(System.currentTimeMillis()));
+
+	        // status가 "On"인 경우 1로, "Off"인 경우 0으로 처리
+	        int statusValue = device.getStatus().equalsIgnoreCase("On") ? 1 : 0;
+	        pst.setInt(5, statusValue);
+
+	        pst.setString(6, device.getRoom_name());
+	        pst.setString(7, device.getUser_id());
+	        result = pst.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -381,9 +208,11 @@ public class ControlDAO {
 		conn = DBUtil.dbConnection();
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, device.getStatus());
-			pst.setString(2, device.getDevice_id());
-			result = pst.executeUpdate(); // DML문장은 executeUpdate, select문은 executeQuery
+			
+			int statusValue = device.getStatus().equalsIgnoreCase("On") ? 1 : 0;
+	        pst.setInt(1, statusValue);
+	        pst.setString(2, device.getDevice_id());
+	        result = pst.executeUpdate();
 
 			if (result > 0) {
 				System.out.println("디바이스 상태 변경 성공!");

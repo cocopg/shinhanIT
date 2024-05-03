@@ -140,7 +140,7 @@ public class IoTController {
 		String manuf = sc.next();
 		System.out.print("종류입력>>");
 		String dtype = sc.next();
-		System.out.print("상태입력>>");
+		System.out.print("상태입력>>");// boolean 변경(온/오프)
 		String status = sc.next();
 		System.out.print("위치입력>>");
 		String rname = sc.next();
@@ -149,7 +149,7 @@ public class IoTController {
 		device.setDevice_id(deviceid);
 		device.setManufacture(manuf);
 		device.setD_type(dtype);
-		device.setStatus(status);
+		device.setStatus(status);// boolean 변경(온/오프)
 		device.setRoom_name(rname);
 		device.setUser_id(isLogin);
 		return device;

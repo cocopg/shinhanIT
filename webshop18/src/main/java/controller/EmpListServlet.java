@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
 
-@WebServlet("/emp/emplist.do")
+@WebServlet("/emp/empList.do")
 public class EmpListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

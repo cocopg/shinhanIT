@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file ="../common/loginHeader.jsp" %>
+<!-- include지시자는 파일을 합쳐서 컴파일한다. -->
  <h1>직원상세보기</h1>
  <form action="empDetail.do" method="post">
     <div class="mb-3 mt-3">

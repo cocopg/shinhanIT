@@ -29,5 +29,28 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+  <script>
+  $(function(){
+		$("form").on("submit", f);
+		$("#email").val(localStorage.getItem("email"));
+  		$("#pwd").val(localStorage.getItem("pwd"));
+  		var checkStatus = localStorage.getItem("checkStatus");
+  		if(checkStatus == 1){
+  			$("#remember").prop("checked", true);
+  		}
+  });
+  function f(){
+	  var check=$("#remember").prop("checked");
+	  if(check){
+		  localStorage.setItem("email",$("#email").val());
+		  localStorage.setItem("pwd",$("#pwd").val());
+		  localStorage.setItem("checkStatus",1);
+	  }else{
+		  localStorage.removeItem("email");
+		  localStorage.removeItem("pwd");
+		  localStorage.removeItem("checkStatus");
+	  }
+  }
+  </script>
 </body>
 </html>

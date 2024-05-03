@@ -54,7 +54,8 @@ public class FirstServlet extends HttpServlet {
 		System.out.println("userid:" + request.getParameter("userid"));
 		response.getWriter().append("<h1>Served at(get): ")
 //		.append(addr)
-				.append(request.getContextPath() + "<h1>");
+		.append(request.getContextPath() + "<h1>")
+		.append("<script></script>");
 	}
 
 	/**

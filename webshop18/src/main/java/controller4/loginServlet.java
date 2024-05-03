@@ -1,4 +1,4 @@
-package controller3;
+package controller4;
 
 import java.io.IOException;
 import java.time.temporal.UnsupportedTemporalTypeException;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
 
-import filter.LoginImpl;
+
 
 @WebServlet("/auth/login.do")
 public class loginServlet extends HttpServlet {

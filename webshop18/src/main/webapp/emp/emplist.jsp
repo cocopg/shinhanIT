@@ -11,7 +11,17 @@
 </script>
 </head>
 <body>
+<%--include지시자:jsp를 합쳐서 컴파일한다 --%>
+<%--include액션태그:각각 컴파일해서 합친다, 밑은 액션태그 --%>
+<jsp:include page="../common/loginHeader.jsp"></jsp:include>
+<h2>접속인원:${total_user }</h2>
+<ul>
+  <c:forEach var="user" items="${user_list}">
+    <li>${user}</li>
+  </c:forEach>
+</ul>
 <h1>${loginEmp.first_name}님 환영합니다</h1>
+<a href="../auth/logout.do">로그아웃</a>
 <h2>현재 접속한 사용자는 : ${loginUser.user_id}</h2>
 <h2>현재 접속자 수 : ${loginUser.total_user}</h2>
 <h1>세션에서읽기:${memberId }</h1>

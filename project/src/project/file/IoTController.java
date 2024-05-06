@@ -243,7 +243,7 @@ public class IoTController {
 
 	private static DevDTO insertMenu() {
 	    System.out.println("-----------------");
-	    System.out.println("  디바이스 on/off");
+	    System.out.println("디바이스 on/off");
 	    System.out.println("-----------------");
 	    System.out.print("기기명을 입력하세요>>");
 	    String deviceid = sc.next();

@@ -13,7 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/President/Desktop/g/ㅎ공부/TIL/shinhanIT/lib/lombok.jar"/>
-	<classpathentry kind="lib" path="C:/apache-tomcat-9.0.88/bin/bootstrap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/President/Desktop/g/ㅎ공부/TIL/lib/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Users/President/Desktop/g/ㅎ공부/TIL/lib/apache-tomcat-9.0.88/bin/bootstrap.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

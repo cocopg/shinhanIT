@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,16 +51,21 @@
 		<c:forEach items="${emplist}" var="emp">
 			<tr>
 				<td><a href="javascript:call(${emp.employee_id})">${emp.employee_id}</td>
-				<td>${emp.first_name}</td>
+				<td>${emp.first_name}-- ( ${fn:length(emp.first_name) })</td>
 				<td>${emp.last_name}</td>
 				<td>${emp.email}</td>
 				<td>${emp.phone_number}</td>
 				<td>${emp.job_id}</td>
-				<td>${emp.salary}</td>
+				<td>
+				<fmt:formatNumber value="${emp.salary}" groupingUsed="true" currencySymbol="\\"></fmt:formatNumber>
+				</td>
 				<td>${emp.department_id}</td>
 				<td>${emp.manager_id}</td>
 				<td>${emp.commission_pct}</td>
-				<td>${emp.hire_date}</td>
+				<td>
+				<fmt:formatDate type="both" value="${emp.hire_date}" pattern="YYYY/MM/dd hh:mm:ss"/>
+				
+				</td>
 				<td><button onclick="location.href='empDelete.do?empid=${emp.employee_id}'">삭제</button>
 			</tr>
 		</c:forEach>

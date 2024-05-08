@@ -4,12 +4,20 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.shinhan.emp.EmpDTO;
+
 
 
 //controller -> service -> DAO
 //			<-			<-
 //service : 비즈니스로직을 수행한다.
 public class IoTService {
+	
+	LoginDAO logindao = new LoginDAO();
+	
+	public UserDTO loginCheck(String email, String phone) {
+		return logindao.loginCheck(email, phone);
+	}
 
 	LoginDAO loginDAO = new LoginDAO();
 	ControlDAO controlDAO = new ControlDAO();

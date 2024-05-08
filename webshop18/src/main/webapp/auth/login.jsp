@@ -3,54 +3,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
 </head>
 <body>
-<div class="container mt-3">
-  <h2>Stacked form</h2>
-  <form action="login.do" method="post">
-    <div class="mb-3 mt-3">
-      <label for="email">Email:</label>
-      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" value="SKING">
-    </div>
-    <div class="mb-3">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" value="515.123.4567">
-    </div>
-    <div class="form-check mb-3">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember"> Remember me
-      </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
-  <script>
-  $(function(){
-		$("form").on("submit", f);
-		$("#email").val(localStorage.getItem("email"));
-  		$("#pwd").val(localStorage.getItem("pwd"));
-  		var checkStatus = localStorage.getItem("checkStatus");
-  		if(checkStatus == 1){
-  			$("#remember").prop("checked", true);
-  		}
-  });
-  function f(){
-	  var check=$("#remember").prop("checked");
-	  if(check){
-		  localStorage.setItem("email",$("#email").val());
-		  localStorage.setItem("pwd",$("#pwd").val());
-		  localStorage.setItem("checkStatus",1);
-	  }else{
-		  localStorage.removeItem("email");
-		  localStorage.removeItem("pwd");
-		  localStorage.removeItem("checkStatus");
-	  }
-  }
-  </script>
+    <div class="wrapper">
+        <div class="container">
+          <div class="sign-in-container">
+            <form action="LoginServlet" method="post">
+              <h1>안녕하세요!</h1>
+              <span>아이디와 비밀번호를 입력하세요</span>
+              <input type="text" placeholder="아이디">
+              <input type="password" placeholder="비밀번호">
+              <div class="msg">
+              <%if (request.getParameter("error") != null) {%>
+                <span class="logErrMsg" id="logErrMsg"></span>
+              <%} %>
+              </div>
+              <div class="sign-btn">
+                <button type="button" id="login" class="form_btn" onclick="location.href='main.html'">로그인</button>
+                <button type="button" id="sigh" class="form_btn" onclick ="location.href='sign.html'">화원가입</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 </body>
 </html>

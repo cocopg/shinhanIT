@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <header>
+    <button type="button" onclick="history.back()" id="back">뒤로가기</button>
+    <button type="button" onclick="location.href='login.html'" id="logoutBtn">로그아웃</button>
+  </header>
+  <div class="main-wrapper">
+    <div class="container2">
+      <div class="sign-in-container">
+        <form>
+          <h1>전원 On/Off</h1>
+          <span>
+            <h3>기기를 입력하세요</h3>
+          </span>
+          <input type="text" id="device" placeholder="기기명">
+          <input type="text" id="status" placeholder="상태값 (On 또는 Off입력)">
+          <div class="msg">
+            <span class="errMsg" id="errMsg"></span>
+          </div>
+          <div class="search-btn">
+            <button type="button" class="form_btn" onclick="errMsg()">상태변경</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

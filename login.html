@@ -14,10 +14,13 @@
             <form>
               <h1>안녕하세요!</h1>
               <span>아이디와 비밀번호를 입력하세요</span>
-              <input type="text" placeholder="아이디">
-              <input type="password" placeholder="비밀번호">
+              <input type="text" id="user_id" placeholder="아이디">
+              <input type="password" id="password" placeholder="비밀번호">
+              <div class="msg">
+                <span class="logErrMsg" id="logErrMsg"></span>
+              </div>
               <div class="sign-btn">
-                <button type="button" id="login" class="form_btn" onclick="location.href='main.html'">로그인</button>
+                <button type="button" id="login" class="form_btn" onclick="login()">로그인</button>
                 <button type="button" id="sigh" class="form_btn" onclick ="location.href='sign.html'">회원가입</button>
               </div>
             </form>

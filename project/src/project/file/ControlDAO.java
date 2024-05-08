@@ -209,9 +209,8 @@ public class ControlDAO {
 		try {
 			pst = conn.prepareStatement(sql);
 			
-			int statusValue = device.getStatus().equalsIgnoreCase("On") ? 1 : 0;
-	        pst.setInt(1, statusValue);
-	        pst.setString(2, device.getDevice_id());
+	        pst.setString(1, device.getDevice_id());
+	        pst.setString(2, device.getStatus());
 	        result = pst.executeUpdate();
 
 			if (result > 0) {

@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+          <div class="sign-in-container">
+            <form>
+              <h1>회원가입</h1>
+              <span>아이디와 비밀번호를 입력하세요</span>
+              <input type="text" placeholder="아이디">
+              <input type="password" placeholder="비밀번호">
+              <input type="text" placeholder="사용자이름">
+              <button type="button" id="sign" class="form_btn"
+              onclick="location.href = 'login.html'" type="submit">가입완료</button>
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

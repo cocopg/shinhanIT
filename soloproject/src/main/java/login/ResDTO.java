@@ -2,11 +2,23 @@ package login;
 
 import java.sql.Timestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResDTO {
 	private int reservation_id;
 	private String device_id;
 	private String start_time;
 	private String end_time;
+
+	public ResDTO(String deviceid, String start, String end) {
+		this.device_id = deviceid;
+		this.start_time = start;
+		this.end_time = end;
+		
+		
+	}
 
 	@Override
 	public String toString() {

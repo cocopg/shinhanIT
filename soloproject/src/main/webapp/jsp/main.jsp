@@ -16,14 +16,14 @@
 <body>
     <header>
         <h1>메인화면</h1>
-        <button type="button" onclick="location.href='login.html'" id="logoutBtn">로그아웃</button>
+    <button type="button" onclick="location.href='login.do'" id="logoutBtn">로그아웃</button>
     </header>
     <div class="main-header">
         <h1>서비스를 선택하세요</h1>
     </div>
     <div class="main-wrapper">
         <div class="content-box">
-            <div class="main-container" onclick="location.href='checkDevice.jsp'">
+            <div class="main-container" onclick="location.href='deviceList.do'">
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
@@ -31,7 +31,7 @@
                     </form>
                 </div>
             </div>
-            <div class="main-container" onclick="location.href='2.html'">
+            <div class="main-container" onclick="location.href='status.do'">
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
@@ -39,7 +39,7 @@
                     </form>
                 </div>
             </div>
-            <div class="main-container" onclick="location.href='3.html'">
+            <div class="main-container" onclick="location.href='res.do'">
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
@@ -47,7 +47,7 @@
                     </form>
                 </div>
             </div>
-            <div class="main-container" onclick="location.href='4.html'">
+            <div class="main-container" onclick="location.href='deviceAD.do'">
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
@@ -55,7 +55,7 @@
                     </form>
                 </div>
             </div>
-            <div class="main-container" onclick="location.href='5.html'">
+            <div class="main-container" onclick="location.href='log.do'">
                 <div class="contents">
                     <form>
                         <img src="Vector.png">

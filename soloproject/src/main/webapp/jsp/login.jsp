@@ -21,9 +21,7 @@
               <input type="text" id="user_id" placeholder="아이디">
               <input type="password" id="password" placeholder="비밀번호">
               <div class="msg">
-              
                 <span class="logErrMsg" id="logErrMsg"></span>
-               
               </div>
               <div class="sign-btn">
                 <button type="button" id="login" class="form_btn" onclick="loginCheck()">로그인</button>

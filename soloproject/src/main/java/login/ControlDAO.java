@@ -25,32 +25,32 @@ public class ControlDAO {
 	ResultSet rs;
 	static Scanner sc = new Scanner(System.in);
 	
-	public List<LogDTO> deviceLog(LogDTO device) {
-		List<LogDTO> devLoglist = new ArrayList<LogDTO>();
-		String sql = "SELECT * FROM ActivityLog where device_id=?";
-		conn = DBUtil.dbConnection();
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, device.getDevice_id());
-			pst.executeUpdate();
-			while (rs.next()) {
-				LogDTO log = new LogDTO();
-				log.setLog_id(rs.getInt("Log_ID"));
-				log.setUser_id(rs.getString("User_ID"));
-				log.setDevice_id(rs.getString("Device_id"));
-				log.setTimestamp(rs.getString("Timestamp"));
-				log.setStatus(rs.getString("Status"));
-				devLoglist.add(log);
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DBUtil.dbDisconnect(conn, st, rs);
-		}
-		return devLoglist;
-	}
+//	public List<LogDTO> deviceLog(LogDTO device) {
+//		List<LogDTO> devLoglist = new ArrayList<LogDTO>();
+//		String sql = "SELECT * FROM ActivityLog where device_id=?";
+//		conn = DBUtil.dbConnection();
+//		try {
+//			pst = conn.prepareStatement(sql);
+//			pst.setString(1, device.getDevice_id());
+//			pst.executeUpdate();
+//			while (rs.next()) {
+//				LogDTO log = new LogDTO();
+//				log.setLog_id(rs.getInt("Log_ID"));
+//				log.setUser_id(rs.getString("User_ID"));
+//				log.setDevice_id(rs.getString("Device_id"));
+//				log.setTimestamp(rs.getString("Timestamp"));
+//				log.setStatus(rs.getString("Status"));
+//				devLoglist.add(log);
+//			}
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			DBUtil.dbDisconnect(conn, st, rs);
+//		}
+//		return devLoglist;
+//	}
 
 	// 활동로그 출력
 	public List<LogDTO> logAll() {
@@ -112,10 +112,6 @@ public class ControlDAO {
 	        pst.setString(2, device.getManufacture());
 	        pst.setString(3, device.getD_type());
 	        pst.setDate(4, new Date(System.currentTimeMillis()));
-
-	        // status가 "On"인 경우 1로, "Off"인 경우 0으로 처리
-	        int statusValue = device.getStatus().equalsIgnoreCase("On") ? 1 : 0;
-	        pst.setInt(5, statusValue);
 
 	        pst.setString(6, device.getRoom_name());
 	        pst.setString(7, device.getUser_id());
@@ -203,31 +199,30 @@ public class ControlDAO {
 	}
 
 	// 디바이스 on/off수정
-		public int devUpdate(DevDTO device) {
-			int result = 0;
-			String sql = "update deviceinfo set status = ? where device_id = ?";
-			conn = DBUtil.dbConnection();
-			try {
-				pst = conn.prepareStatement(sql);
-				
-		        pst.setString(1, device.getDevice_id());
-		        pst.setString(2, device.getStatus());
-		        result = pst.executeUpdate();
+	public int devUpdate(DevDTO device) {
+		int result = 0;
+		String sql = "update deviceinfo set status = ? where device_id = ?";
+		conn = DBUtil.dbConnection();
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, device.getStatus());
+			pst.setString(2, device.getDevice_id());
+			result = pst.executeUpdate();
 
-				if (result > 0) {
-					System.out.println("디바이스 상태 변경 성공!");
-					System.out.println("현재 " + device.getDevice_id() + " 상태: " + device.getStatus());
-				} else {
-					System.out.println("디바이스 상태 변경 실패!");
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DBUtil.dbDisconnect(conn, pst, rs);
+			if (result > 0) {
+				System.out.println("디바이스 상태 변경 성공!");
+				System.out.println("현재 " + device.getDevice_id() + " 상태: " + device.getStatus());
+			} else {
+				System.out.println("디바이스 상태 변경 실패!");
 			}
-			return result;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbDisconnect(conn, pst, rs);
 		}
+		return result;
+	}
 
 	// 디바이스 정보를 비교
 	private boolean isCurrentDevice(DevDTO device) {

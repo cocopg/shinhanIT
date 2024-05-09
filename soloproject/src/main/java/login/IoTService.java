@@ -14,18 +14,16 @@ public class IoTService {
 	
 	LoginDAO logindao = new LoginDAO();
 	
-//	public UserDTO loginCheck(String email, String phone) {
-//		return logindao.loginCheck(email, phone);
-//	}
+
 
 	LoginDAO loginDAO = new LoginDAO();
 	ControlDAO controlDAO = new ControlDAO();
 	
 	//특정기기 활동로그
 	
-	public List<LogDTO> deviceLog(LogDTO device) {
-		return controlDAO.deviceLog(device);
-	}
+//	public List<LogDTO> deviceLog(LogDTO device) {
+//		return controlDAO.deviceLog(device);
+//	}
 	//활동로그 전체출력
 	public List<LogDTO> logAll() {
 		return controlDAO.logAll();
@@ -62,7 +60,8 @@ public class IoTService {
 	//1.모든 디바이스 조회
 	public List<DevDTO> selectAll() {
 			return controlDAO.selectAll();
-		}
+	}
+	
 	public String login(String userId, String password) {
 		return loginDAO.login(userId, password);
 	}

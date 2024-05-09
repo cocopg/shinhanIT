@@ -112,7 +112,7 @@ public class ControlDAO {
 	        pst.setString(2, device.getManufacture());
 	        pst.setString(3, device.getD_type());
 	        pst.setDate(4, new Date(System.currentTimeMillis()));
-
+	        pst.setString(5, device.getStatus());
 	        pst.setString(6, device.getRoom_name());
 	        pst.setString(7, device.getUser_id());
 	        result = pst.executeUpdate();

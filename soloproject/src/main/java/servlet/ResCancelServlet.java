@@ -15,6 +15,7 @@ import login.DevDTO;
 import login.IoTService;
 
 @WebServlet("/jsp/resCancel.do")
+
 public class ResCancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,9 +29,12 @@ public class ResCancelServlet extends HttpServlet {
 			int result = service.resDelete(resid);
 
 		}
-		RequestDispatcher rd;
-		rd=request.getRequestDispatcher("/jsp/resCancel.jsp");
-		rd.forward(request, response);
+		 RequestDispatcher rd;
+         rd = request.getRequestDispatcher("/jsp/resCancel.jsp");
+         rd.forward(request, response);
+		response.setContentType("text/plain; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
 
 	}
 }

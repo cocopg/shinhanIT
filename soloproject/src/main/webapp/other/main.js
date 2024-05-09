@@ -135,8 +135,7 @@ function cancelReservation() {
             }
         }
     };
-    xml.open("GET", "/soloproject/jsp/resCancel.do", true);
-    xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xml.send("resid=" + resid);
+    xml.open("GET", "/soloproject/jsp/resCancel.do?resid=" + resid, true);
+    xml.send();
 }
 

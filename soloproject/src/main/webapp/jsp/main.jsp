@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <h1>메인화면</h1>
+        <h1></h1>
     <button type="button" onclick="location.href='login.do'" id="logoutBtn">로그아웃</button>
     </header>
     <div class="main-header">
@@ -26,7 +26,7 @@
             <div class="main-container" onclick="location.href='deviceList.do'">
                 <div class="contents">
                     <form>
-                        <img src="Vector.png">
+                        <img src="/soloproject/image/devlist.png">
                         <p>기기목록</p>
                     </form>
                 </div>
@@ -34,7 +34,7 @@
             <div class="main-container" onclick="location.href='status.do'">
                 <div class="contents">
                     <form>
-                        <img src="Vector.png">
+                        <img src="/soloproject/image/status.png">
                         <p>전원설정</p>
                     </form>
                 </div>
@@ -42,7 +42,7 @@
             <div class="main-container" onclick="location.href='res.do'">
                 <div class="contents">
                     <form>
-                        <img src="Vector.png">
+                        <img src="/soloproject/image/res.png">
                         <p>기기예약</p>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
             <div class="main-container" onclick="location.href='devInsert.do'">
                 <div class="contents">
                     <form>
-                        <img src="Vector.png">
+                        <img src="/soloproject/image/add.png">
                         <p>기기등록/삭제</p>
                     </form>
                 </div>
@@ -58,7 +58,7 @@
             <div class="main-container" onclick="location.href='log.do'">
                 <div class="contents">
                     <form>
-                        <img src="Vector.png">
+                        <img src="/soloproject/image/log.png">
                         <p>전원로그</p>
                     </form>
                 </div>

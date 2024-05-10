@@ -81,8 +81,8 @@ button {
 }
 
 .form_btn:hover {
-  box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
-  background-color: #b1e7f3;
+  transform: scale(1.1);
+	box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px #A1C7FF;
 }
 
 .form_btn:active {
@@ -151,14 +151,15 @@ header {
 
 #logoutBtn:hover,
 #back:hover {
-  box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
-  background-color: #b1e7f3;
+  transform: scale(1.1);
+	box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px #A1C7FF;
 }
 
 #logoutBtn:active,
 #back:active {
-  box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
-  background-color: #1FAFCF;
+	background-color: #1FAFCF;
+	transform: scale(1.1);
+	box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px #A1C7FF;
 }
 
 /*----------------------------메인화면css--------------------------*/
@@ -194,6 +195,11 @@ header {
   height: 250px;
   display: flex;
   justify-content: center;
+}
+.main-container:hover{
+	transform: scale(1.1);
+	box-shadow: -5px -5px 10px #ffffff, 5px 5px 10px #A1C7FF;
+	cursor : pointer;
 }
 
 .contents {
@@ -381,4 +387,7 @@ table>th, td{
 }
 .msg{
   min-height: 35px;
+}
+img{
+	width:100px;
 }

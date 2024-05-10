@@ -100,7 +100,8 @@ function sign() {
             };
             xml.send("userid=" + encodeURIComponent(userId) + "&password=" + encodeURIComponent(password) + "&name=" + encodeURIComponent(name));
         }
-
+        
+//상태값변경
 function statErrMsg() {
   var device_id = document.getElementById('device_id').value;
   var status = document.getElementById('status').value;

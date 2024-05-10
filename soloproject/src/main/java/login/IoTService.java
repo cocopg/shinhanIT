@@ -61,15 +61,14 @@ public class IoTService {
 	public List<DevDTO> selectAll() {
 			return controlDAO.selectAll();
 	}
-	
+	//로그인
 	public String login(String userId, String password) {
 		return loginDAO.login(userId, password);
 	}
+	//회원가입
+	public boolean register(String userId, String password, String name) {
+		return loginDAO.register(userId, password, name);
+	}
 	
-	
-//	//직원번호 이용해서 이름과 직책, 급여를 조회한다.
-//	public Map<String, Object> empInfo(int empid) {
-//		// TODO Auto-generated method stub
-//		return empDAO.empInfo(empid);
-//	}
+
 }

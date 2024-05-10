@@ -24,33 +24,6 @@ public class ControlDAO {
 	PreparedStatement pst; // Statement를 상속받음, 바인딩변수 지원
 	ResultSet rs;
 	static Scanner sc = new Scanner(System.in);
-	
-//	public List<LogDTO> deviceLog(LogDTO device) {
-//		List<LogDTO> devLoglist = new ArrayList<LogDTO>();
-//		String sql = "SELECT * FROM ActivityLog where device_id=?";
-//		conn = DBUtil.dbConnection();
-//		try {
-//			pst = conn.prepareStatement(sql);
-//			pst.setString(1, device.getDevice_id());
-//			pst.executeUpdate();
-//			while (rs.next()) {
-//				LogDTO log = new LogDTO();
-//				log.setLog_id(rs.getInt("Log_ID"));
-//				log.setUser_id(rs.getString("User_ID"));
-//				log.setDevice_id(rs.getString("Device_id"));
-//				log.setTimestamp(rs.getString("Timestamp"));
-//				log.setStatus(rs.getString("Status"));
-//				devLoglist.add(log);
-//			}
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.dbDisconnect(conn, st, rs);
-//		}
-//		return devLoglist;
-//	}
 
 	// 활동로그 출력
 	public List<LogDTO> logAll() {

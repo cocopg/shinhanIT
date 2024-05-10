@@ -27,7 +27,7 @@
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
-                        <p>1번항목</p>
+                        <p>기기목록</p>
                     </form>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
-                        <p>2번항목</p>
+                        <p>전원설정</p>
                     </form>
                 </div>
             </div>
@@ -43,15 +43,15 @@
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
-                        <p>3번항목</p>
+                        <p>기기예약</p>
                     </form>
                 </div>
             </div>
-            <div class="main-container" onclick="location.href='deviceAD.do'">
+            <div class="main-container" onclick="location.href='devInsert.do'">
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
-                        <p>4번항목</p>
+                        <p>기기등록/삭제</p>
                     </form>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="contents">
                     <form>
                         <img src="Vector.png">
-                        <p>5번항목</p>
+                        <p>전원로그</p>
                     </form>
                 </div>
             </div>

@@ -23,17 +23,17 @@
   <div class="con-wrapper">
     <div class="container3">
       <div class="top-select">
-        <button type="button" id="select" class="form_btn" onclick="location.href='res.do'">예약</button>
-        <button type="button" id="select" class="form_btn" onclick="location.href='resCancel.do'">취소</button>
-        <button type="button" id="select" class="form_btn" onclick="location.href='resList.do'">내역</button>
+        <button type="button" id="select" class="form_btn" onclick="location.href='devInsert.do'">기기추가</button>
+        <button type="button" id="select" class="form_btn" onclick="location.href='devDelete.do'">기기삭제</button>
+        <button type="button" id="select" class="form_btn" onclick="location.href='deviceList.do'">기기목록</button>
       </div>
       <div class="sign-in-container">
-        <form class="form3">
-          <h1>동작 예약</h1>
-          <input type="text" id="deviceId" placeholder="기기ID">
-          <input type="text" id="startTime" placeholder="시작시간(yyyy-mm-dd hh:mm:ss)">
-          <input type="text" id="endTime" placeholder="종료시간(yyyy-mm-dd hh:mm:ss)">
-            <button type="button" class="form_btn" onclick="reserve()">예약</button>
+        <form class="form3" action="${path}/jsp/devDelete.do" method="post">
+          <h1>기기삭제</h1>
+          <input type="text" id="deviceId" name="deviceId" placeholder="기기ID">
+          <input type="text" id="manufacture" name="manufacture" placeholder="제조사">
+            <!-- <button type="button" class="form_btn" onclick="deleteDevice()">삭제하기</button> -->
+            <button type="submit" class="form_btn">삭제하기</button>
         </form>
       </div>
     </div>

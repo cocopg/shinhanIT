@@ -41,7 +41,7 @@
                 </tr>
               </thead>
             </table>
-            <div class="scroll-box" id="scroll-box" style="display:none;">
+            <div class="scroll-box" id="scroll-box">
             <table>
               <tbody>
                 <c:forEach items="${devicelist}" var="device">
@@ -63,8 +63,8 @@
           </div>
         </form>
         <div class="search-btn">
-        	<button type="button" id="deviceLook" class="form_btn" onclick="deviceLook()">조회하기</button>
         	<button type="button" class="form_btn" onclick="location.href='status.do'">상태변경</button>
+        	<button type="button" class="form_btn" onclick="location.href='devInsert.do'">등록/삭제</button>
       	</div>
       </div>
     </div>

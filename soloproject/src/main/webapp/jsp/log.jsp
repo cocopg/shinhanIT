@@ -22,8 +22,8 @@
   <div class="con-wrapper">
     <div class="container1">
       <div class="sign-in-container">
-        <form id="main1">
-          <h1>기기목록</h1>
+        <form id="main2">
+          <h1 class="log">전원 로그</h1>
           <div class="table-box2">
             <table>
               <thead>
@@ -36,7 +36,7 @@
                 </tr>
               </thead>
             </table>
-            <div class="scroll-box2" id="scroll-box" style="display:none;">
+            <div class="scroll-box2" id="scroll-box">
             <table>
               <tbody>
                 <c:forEach items="${loglist}" var="log">
@@ -56,7 +56,6 @@
           </div>
         </form>
         <div class="search-btn">
-        	<button type="button" id="deviceLook" class="form_btn" onclick="deviceLook()">조회하기</button>
       	</div>
       </div>
     </div>

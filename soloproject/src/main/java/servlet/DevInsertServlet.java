@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import login.ControlDAO;
 import login.DevDTO;
@@ -29,24 +29,33 @@ public class DevInsertServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	request.setCharacterEncoding("utf-8");
-    	//여기하고
-		String deviceid=request.getParameter("device_id");
-		String manufacture=request.getParameter("manufacture");
-		String d_type=request.getParameter("d_type");
-		String status=request.getParameter("status");
-		String room_name=request.getParameter("room_name");
-		
-		ResDTO res = new ResDTO();
-		
-		IoTService service=new IoTService();
-		int result = service.resInsert(res);
-		
-		request.setAttribute("message", result+"건 입력됨");
-		RequestDispatcher rd;
-		rd=request.getRequestDispatcher("result.jsp");
-		rd.forward(request, response);
-
+        request.setCharacterEncoding("utf-8");
         
+        String deviceId = request.getParameter("deviceId");
+        String manufacture = request.getParameter("manufacture");
+        String dType = request.getParameter("d_type");
+        String status = request.getParameter("status");
+        String roomName = request.getParameter("room_name");
+        
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("user_id");
+        System.out.println(userId);
+        
+        DevDTO device = new DevDTO();
+        device.setDevice_id(deviceId);
+        device.setManufacture(manufacture);
+        device.setD_type(dType);
+        device.setStatus(status);
+        device.setRoom_name(roomName);
+        device.setUser_id(userId);
+        
+        ControlDAO dao = new ControlDAO();
+        int result = dao.devInsert(device);
+        
+        String message = (result > 0) ? "기기가 추가되었습니다." : "기기 추가에 실패했습니다.";
+        request.setAttribute("message", message);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("/jsp/devInsert.jsp");
+        rd.forward(request, response);
     }
 }

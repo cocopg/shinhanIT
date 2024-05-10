@@ -11,21 +11,24 @@
     <link rel="stylesheet" href="${path }/other/main.css">
     <script src="${path}/other/main.js"></script>
 </head>
-<body>
-    <div class="wrapper">
+<body>	
+<header>
+    <button type="button" id="back" onclick="location.href='login.do'">뒤로가기</button>
+    </header>
+    <div class="con-wrapper">
         <div class="container">
           <div class="sign-in-container">
-            <form action="/jsp/login.do" method="post">
+            <form action="${path}/jsp/login.do" method="post">
               <h1>안녕하세요!</h1>
               <span>아이디와 비밀번호를 입력하세요</span>
-              <input type="text" id="user_id" placeholder="아이디">
-              <input type="password" id="password" placeholder="비밀번호">
+              <input type="text" id="userid" name="userid" placeholder="아이디">
+              <input type="password" id="password" name="password" placeholder="비밀번호">
+              <input type="text" id="name" name="name" placeholder="이름">
               <div class="msg">
-                <span class="logErrMsg" id="logErrMsg"></span>
+                <span class="signErrMsg" id="signErrMsg"></span>
               </div>
-              <div class="login-btn">
-                <button type="button" id="login" class="form_btn" onclick="loginCheck()">로그인</button>
-                <button type="button" id="sigh" class="form_btn" onclick ="location.href='sign.do'">회원가입</button>
+              <div class="sign-btn">
+                <button type="button" id="signIn" name ="signIn" class="form_btn" onclick="sign()">가입</button>
               </div>
             </form>
           </div>

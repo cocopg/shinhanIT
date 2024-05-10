@@ -24,18 +24,19 @@
     <div class="container3">
       <div class="top-select">
         <button type="button" id="select" class="form_btn" onclick="location.href='devInsert.do'">기기추가</button>
-        <button type="button" id="select" class="form_btn" onclick="location.href='devDelete.do'">취소</button>
+        <button type="button" id="select" class="form_btn" onclick="location.href='devDelete.do'">기기삭제</button>
+        <button type="button" id="select" class="form_btn" onclick="location.href='deviceList.do'">기기목록</button>
       </div>
       <div class="sign-in-container">
-        <form class="form3">
-          <h1>동작 예약</h1>
-          //여기하고
-          <input type="text" id="deviceId" placeholder="기기ID">
-          <input type="text" id="manufacture" placeholder="제조사">
-          <input type="text" id="d_type" placeholder="종류">
-          <input type="text" id="status" placeholder="전원">
-          <input type="text" id="room_name" placeholder="위치">
-            <button type="button" class="form_btn" onclick="reserve()">예약</button>
+        <form class="form4" action="${path}/jsp/devInsert.do" method="post">
+          <h1>기기추가</h1>
+          <span>기기정보를 입력하세요</span>
+          <input type="text" id="deviceId" name="deviceId" placeholder="기기ID">
+          <input type="text" id="manufacture" name="manufacture" placeholder="제조사">
+          <input type="text" id="d_type" name="d_type" placeholder="종류">
+          <input type="text" id="status" name="status" placeholder="전원">
+          <input type="text" id="room_name" name="room_name" placeholder="위치">
+            <button type="submit" class="form_btn">등록하기</button>
         </form>
       </div>
     </div>

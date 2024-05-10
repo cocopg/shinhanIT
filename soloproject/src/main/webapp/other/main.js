@@ -4,7 +4,7 @@ window.onload = function () {
   const container = document.querySelector(".container");
 }
 
-
+//에러메세지
 function errMsg() {
   var device = document.getElementById('device').value;
   var status = document.getElementById('status').value;
@@ -25,6 +25,7 @@ function errMsg() {
   }
 }
 
+//로그인
 var loginAttempts = 3;
 
 function loginCheck() {
@@ -32,8 +33,17 @@ function loginCheck() {
   var id = document.getElementById('user_id').value;
   var password = document.getElementById('password').value;
   var logErrMsg = document.getElementById('logErrMsg');
-
-  if (id.trim() != '' || password.trim() != '') {
+  
+  if(id.trim() === '' && password.trim() != ''){
+	  logErrMsg.innerText = '아이디를 입력해주세요';
+      logErrMsg.style.display = 'block';
+  }else if(id.trim() != '' && password.trim() === ''){
+	  logErrMsg.innerText = '비밀번호를 입력해주세요';
+      logErrMsg.style.display = 'block';
+  }else if(id.trim() === '' || password.trim() === ''){
+	  logErrMsg.innerText = '아이디와 비밀번호를 입력해주세요';
+      logErrMsg.style.display = 'block';
+  }else if (id.trim() != '' || password.trim() != '') {
     var xml = new XMLHttpRequest();
     var data = "user_id=" + encodeURIComponent(id) + "&password=" + encodeURIComponent(password);
     xml.open("POST", "login.do?" + data, true);
@@ -55,17 +65,41 @@ function loginCheck() {
         }
       }
     };
-
     xml.send();
   } else {
     logErrMsg.style.display = 'none';
   }
 }
 
-function deviceLook() {
-  var list = document.getElementById('scroll-box');
-  list.style.display = 'block';
-}
+
+//회원가입
+function sign() {
+            var userId = document.getElementById("userid").value;
+            var password = document.getElementById("password").value;
+            var name = document.getElementById("name").value;
+            var signErrMsg = document.getElementById("signErrMsg");
+            
+            var xml = new XMLHttpRequest();
+            xml.open("POST", "/soloproject/jsp/sign.do", true);
+            xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xml.onreadystatechange = function() {
+                if (xml.readyState === XMLHttpRequest.DONE) {
+                    if (xml.status === 200) {
+                        var response = xml.responseText;
+                        if (response === "success") {
+                            alert("회원가입이 완료되었습니다.");
+                            window.location.href = "/soloproject/jsp/login.do";
+                        } else {
+                            signErrMsg.innerText = "이미 존재하는 사용자입니다. 다른 아이디를 입력하세요.";
+                            signErrMsg.style.display= 'block';
+                        }
+                    } else {
+                        console.error(xml.status);
+                    }
+                }
+            };
+            xml.send("userid=" + encodeURIComponent(userId) + "&password=" + encodeURIComponent(password) + "&name=" + encodeURIComponent(name));
+        }
 
 function statErrMsg() {
   var device_id = document.getElementById('device_id').value;
@@ -116,21 +150,20 @@ function reserve() {
             xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xml.send("device_id=" + deviceId + "&start_time=" + startTime + "&end_time=" + endTime);
         }
-//이거부터
+
+//예약삭제
 function cancelReservation() {
     var resid = document.getElementById('residInput').value;
     if (resid.trim() === "") {
         alert("예약번호를 입력하세요.");
         return;
     }
-    
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = function() {
         if (xml.readyState === XMLHttpRequest.DONE) {
             if (xml.status === 200) {
                 alert(xml.responseText);
             } else {
-                // 오류가 발생한 경우
                 alert("예약 취소 중 오류가 발생했습니다.");
             }
         }
@@ -138,4 +171,5 @@ function cancelReservation() {
     xml.open("GET", "/soloproject/jsp/resCancel.do?resid=" + resid, true);
     xml.send();
 }
+
 

@@ -33,6 +33,9 @@
           <input type="text" id="deviceId" placeholder="기기ID">
           <input type="text" id="startTime" placeholder="시작시간(yyyy-mm-dd hh:mm:ss)">
           <input type="text" id="endTime" placeholder="종료시간(yyyy-mm-dd hh:mm:ss)">
+          <div class="msg">
+              <span class="resErrMsg" id="resErrMsg"></span>
+          </div>
             <button type="button" class="form_btn" onclick="reserve()">예약</button>
         </form>
       </div>

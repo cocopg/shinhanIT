@@ -2,10 +2,15 @@ package login;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 //DTO(Data Transfer Object)
 //JavaBeans 기술에서 이용(Jsp,String, Mybatis는 JavaBeans기술을 이용한다)
 public class DevDTO {
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

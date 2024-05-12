@@ -30,20 +30,19 @@ public class ResServlet extends HttpServlet {
             throws ServletException, IOException {
     	request.setCharacterEncoding("utf-8");
     	
-		String deviceid=request.getParameter("device_id");
-		String start=request.getParameter("start_time");
-		String end=request.getParameter("end_time");
+		String deviceid = request.getParameter("device_id");
+		String start = request.getParameter("start_time");
+		String end = request.getParameter("end_time");
 		
 		ResDTO res = new ResDTO(deviceid,start,end);
 		
 		IoTService service=new IoTService();
 		int result = service.resInsert(res);
 		
-		request.setAttribute("message", result+"건 입력됨");
-		RequestDispatcher rd;
-		rd=request.getRequestDispatcher("result.jsp");
-		rd.forward(request, response);
-
-        
+		 response.setContentType("text/plain");
+		    PrintWriter out = response.getWriter();
+		    out.print(result);
+		
     }
+    
 }

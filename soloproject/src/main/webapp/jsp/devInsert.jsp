@@ -36,6 +36,9 @@
           <input type="text" id="d_type" name="d_type" placeholder="종류">
           <input type="text" id="status" name="status" placeholder="전원">
           <input type="text" id="room_name" name="room_name" placeholder="위치">
+          <div class="msg">
+              <span class="devErrMsg" id="devErrMsg"></span>
+          </div>
             <button type="submit" class="form_btn">등록하기</button>
         </form>
       </div>

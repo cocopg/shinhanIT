@@ -194,6 +194,7 @@ public class ControlDAO {
 		} finally {
 			DBUtil.dbDisconnect(conn, pst, rs);
 		}
+		System.out.println(result);
 		return result;
 	}
 

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import login.ControlDAO;
 import login.DevDTO;
+import login.IoTController;
+import login.IoTService;
 
 @WebServlet("/jsp/status.do")
 public class StatusUpdateServlet extends HttpServlet {
@@ -19,7 +21,7 @@ public class StatusUpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	RequestDispatcher rd;
-        rd = request.getRequestDispatcher("status.jsp");
+        rd = request.getRequestDispatcher("/jsp/status.jsp");
         rd.forward(request, response);
     }
 
@@ -27,20 +29,21 @@ public class StatusUpdateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
 
-        PrintWriter out = response.getWriter();
 
         request.setCharacterEncoding("utf-8");
         String device_id = request.getParameter("device_id");
         String status = request.getParameter("status");
         System.out.println(device_id + ":" + status);
-        ControlDAO controlDAO = new ControlDAO();
+        
         DevDTO device = new DevDTO();
         device.setDevice_id(device_id);
         device.setStatus(status);
-
-        int result = controlDAO.devUpdate(device);
         
-
+        IoTService service = new IoTService();
+        int result = service.devUpdate(device);
         
+        response.setContentType("text/plain;"); 
+        PrintWriter out = response.getWriter();
+        out.print(result);
     }
 }

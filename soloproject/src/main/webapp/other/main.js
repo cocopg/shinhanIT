@@ -79,6 +79,16 @@ function sign() {
             var name = document.getElementById("name").value;
             var signErrMsg = document.getElementById("signErrMsg");
             
+            if(userId.trim() === ''){
+			signErrMsg.innerText = '아이디를 입력해주세요';
+			      signErrMsg.style.display = 'block';
+			  }else if(password.trim() === ''){
+				  signErrMsg.innerText = '비밀번호를 입력해주세요';
+			      signErrMsg.style.display = 'block';
+			  }else if(name.trim() === '' ){
+				  signErrMsg.innerText = '이름을 입력해주세요';
+			      signErrMsg.style.display = 'block';
+			  }else{
             var xml = new XMLHttpRequest();
             xml.open("POST", "/soloproject/jsp/sign.do", true);
             xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -101,6 +111,8 @@ function sign() {
             xml.send("userid=" + encodeURIComponent(userId) + "&password=" + encodeURIComponent(password) + "&name=" + encodeURIComponent(name));
         }
         
+            }
+        
 //상태값변경
 function statErrMsg() {
   var device_id = document.getElementById('device_id').value;
@@ -119,15 +131,14 @@ function statErrMsg() {
     var params = "device_id=" + device_id + "&status=" + status;
     xml.open("POST", url, true);
     xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    console.log(xml.status)
     xml.onreadystatechange = function () {
       if (xml.readyState == 4 && xml.status == 200) {
-        if (xml.responseText.trim() === 'true') {
-          statErrMsg.style.display = 'none';
-          alert('변경성공');
+        if (xml.responseText.trim() === '0') {
+			statErrMsg.innerText = '입력된 기기명이 존재하지 않습니다';
+            statErrMsg.style.display = 'block';
         } else {
-          statErrMsg.innerText = '입력된 기기명이 존재하지 않습니다';
-          statErrMsg.style.display = 'block';
+			statErrMsg.innerText = '상태변경에 성공했습니다!';
+            statErrMsg.style.display = 'block';
         }
       }
     }
@@ -140,11 +151,18 @@ function reserve() {
             var deviceId = document.getElementById("deviceId").value;
             var startTime = document.getElementById("startTime").value;
             var endTime = document.getElementById("endTime").value;
+			var resErrMsg = document.getElementById('resErrMsg');
 
             var xml = new XMLHttpRequest();
             xml.onreadystatechange = function() {
                 if (xml.readyState == 4 && xml.status == 200) {
-                    alert(xml.responseText);
+					if(xml.responseText.trim() === '1'){
+                    	resErrMsg.innerText='예약에 성공했습니다!';
+                    	resErrMsg.style.display='none';
+                    }else{
+                    	resErrMsg.innerText='예약에 실패했습니다!';
+                    	resErrMsg.style.display='none';
+					}
                 }
             };
             xml.open("POST", "/soloproject/jsp/res.do", true);
@@ -155,22 +173,28 @@ function reserve() {
 //예약삭제
 function cancelReservation() {
     var resid = document.getElementById('residInput').value;
+	var resErrMsg = document.getElementById('resErrMsg');
+    
     if (resid.trim() === "") {
         alert("예약번호를 입력하세요.");
         return;
     }
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = function() {
-        if (xml.readyState === XMLHttpRequest.DONE) {
-            if (xml.status === 200) {
-                alert(xml.responseText);
-            } else {
-                alert("예약 취소 중 오류가 발생했습니다.");
-            }
-        }
+        if (xml.readyState == 4 && xml.status === 200) {
+             if(xml.responseText.trim() === '1'){
+                  		resErrMsg.innerText='예약이 취소됐습니다.';
+                  		resErrMsg.style.display='block';
+                  		loaction.reload();
+                  	} else if(xml.responseText.trim() === '0'){
+                  		resErrMsg.innerText='예약취소에 실패했습니다!';
+                  		resErrMsg.style.display='block';
+					}
+				}
     };
     xml.open("GET", "/soloproject/jsp/resCancel.do?resid=" + resid, true);
     xml.send();
 }
+
 
 

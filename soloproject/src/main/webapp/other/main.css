@@ -70,6 +70,7 @@ button {
   display: flex;
   justify-content: space-between;
   width: 330px;
+  margin:15px;
 }
 .sign-btn {
   display: flex;
@@ -363,7 +364,7 @@ table>th, td{
     width: 165px;
   }
 }
-.errMsg, .statErrMsg, .logErrMsg, .signErrMsg{
+.errMsg, .statErrMsg, .logErrMsg, .signErrMsg, .resErrMsg, .devErrMsg {
   display: none;
   color: #ff0000;
 }

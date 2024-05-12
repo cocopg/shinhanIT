@@ -14,7 +14,7 @@
 <body>
 <header>
     <button type="button" onclick="history.back()" id="back">뒤로가기</button>
-    <button type="button" onclick="location.href='login.html'" id="logoutBtn">로그아웃</button>
+    <button type="button" onclick="location.href='login.do'" id="logoutBtn">로그아웃</button>
 </header>
 
 <div class="con-wrapper">
@@ -27,7 +27,10 @@
         <div class="sign-in-container">
             <form class="form3">
                 <h1>예약취소</h1>
-                <input type="text" id="residInput" placeholder="예약번호">
+                <input type="number" id="residInput" placeholder="예약번호">
+                <div class="msg">
+                	<span class="resErrMsg" id="resErrMsg"></span>
+              	</div>
                 <button type="button" class="form_btn" onclick="cancelReservation()">취소하기</button>
             </form>
         </div>

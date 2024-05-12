@@ -43,8 +43,8 @@ public class IoTService {
 	    return controlDAO.resList();
 	}
 	//예약삭제
-	public int resDelete(int reservationId) {
-		return controlDAO.resDelete(reservationId);
+	public int resDelete(int resId) {
+		return controlDAO.resDelete(resId);
 	}
 	
 	//3.시간예약

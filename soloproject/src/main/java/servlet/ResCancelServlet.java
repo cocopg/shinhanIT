@@ -22,19 +22,23 @@ public class ResCancelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String residStr = request.getParameter("resid");
+		int result = 0;
 		if (residStr != null && !residStr.isEmpty()) {
-			int resid = Integer.parseInt(residStr);
+			int resId = Integer.parseInt(residStr);
 
 			IoTService service = new IoTService();
-			int result = service.resDelete(resid);
+			result = service.resDelete(resId);
+			
+			response.setContentType("text/plain;"); 
+			PrintWriter out = response.getWriter();
+			out.print(result);
 
 		}
-		 RequestDispatcher rd;
-         rd = request.getRequestDispatcher("/jsp/resCancel.jsp");
-         rd.forward(request, response);
-		response.setContentType("text/plain; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-
+		System.out.println("받는값" + result);
+			RequestDispatcher rd;
+			rd = request.getRequestDispatcher("/jsp/resCancel.jsp");
+			rd.forward(request, response);		
+			
+			
 	}
 }

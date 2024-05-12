@@ -33,6 +33,9 @@
           <input type="text" id="deviceId" name="deviceId" placeholder="기기ID">
           <input type="text" id="manufacture" name="manufacture" placeholder="제조사">
             <!-- <button type="button" class="form_btn" onclick="deleteDevice()">삭제하기</button> -->
+            <div class="msg">
+              <span class="devErrMsg" id="devErrMsg"></span>
+          	</div>
             <button type="submit" class="form_btn">삭제하기</button>
         </form>
       </div>

@@ -29,7 +29,7 @@ public class DevInsertServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         
         String deviceId = request.getParameter("deviceId");
         String manufacture = request.getParameter("manufacture");
@@ -49,11 +49,13 @@ public class DevInsertServlet extends HttpServlet {
         device.setRoom_name(roomName);
         device.setUser_id(userId);
         
-        ControlDAO dao = new ControlDAO();
-        int result = dao.devInsert(device);
+        DevDTO dev = new DevDTO(deviceId,manufacture,dType,null, status,roomName,userId, userId);
         
-        String message = (result > 0) ? "기기가 추가되었습니다." : "기기 추가에 실패했습니다.";
-        request.setAttribute("message", message);
+        IoTService service = new IoTService();
+		int result = service.devInsert(dev);
+		response.setContentType("text/plain");
+	    PrintWriter out = response.getWriter();
+	    out.print(result);
         
         RequestDispatcher rd = request.getRequestDispatcher("/jsp/devInsert.jsp");
         rd.forward(request, response);

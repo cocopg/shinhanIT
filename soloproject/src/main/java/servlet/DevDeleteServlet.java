@@ -27,6 +27,7 @@ public class DevDeleteServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String deviceId = request.getParameter("deviceId");
         String manufacture = request.getParameter("manufacture");
+        PrintWriter out = response.getWriter();
         
         DevDTO device = new DevDTO();
         device.setDevice_id(deviceId);
@@ -35,7 +36,15 @@ public class DevDeleteServlet extends HttpServlet {
         
         IoTService service=new IoTService();
         int result = service.devDelete(device);
-        System.out.println(result);
-        response.sendRedirect("devDelete.do");
+
+        if (result > 0) {
+            // 삭제 성공 시
+            response.sendRedirect("devDelete.do");
+            out.println("<script>alert('삭제성공!');</script>");
+        } else {
+            // 삭제 실패 시
+            out.println("<script>alert('삭제에 실패하였습니다.');</script>");
+            response.sendRedirect("devDelete.do");
+        }
 	}
 }

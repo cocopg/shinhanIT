@@ -18,7 +18,7 @@ import com.shinhan.emp.EmpDTO;
 /**
  * Servlet Filter implementation class LoginCheckFilter
  */
-@WebFilter("*.do")
+//@WebFilter("*.do")
 public class LoginCheckFilter extends HttpFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -31,7 +31,6 @@ public class LoginCheckFilter extends HttpFilter implements Filter {
 		// webshop/auth/login.do
 		if (!req.getRequestURI().endsWith("login.do")) {
 			session.setAttribute("lastRequest", req.getRequestURI());
-			System.out.println(req.getRequestURI());
 
 			EmpDTO emp = (EmpDTO) session.getAttribute("loginEmp");
 			if (emp == null) {

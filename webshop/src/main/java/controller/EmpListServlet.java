@@ -27,11 +27,6 @@ public class EmpListServlet extends HttpServlet {
 			response.sendRedirect("../auth/login.do");
 			return;
 		}
-		
-		
-		
-		
-		
 		EmpService eService=new EmpService();
 		List<EmpDTO> empAll = eService.selectAll();
 		System.out.println(empAll.size() + "건 조회됨");

@@ -25,7 +25,7 @@ public class DeptController {
 			case 2 -> {
 				System.out.println("조회할 지역번호");
 				int locid = sc.nextInt();
-				DeptView.print(deptService.selectBylocid(locid), "특정직원조회");
+				DeptView.print(deptService.selectById(locid), "특정직원조회");
 			}
 			default -> {
 			}

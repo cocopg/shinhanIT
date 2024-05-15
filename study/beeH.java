@@ -1,4 +1,4 @@
-package shinhanIT;
+
 
 import java.util.Scanner;
 

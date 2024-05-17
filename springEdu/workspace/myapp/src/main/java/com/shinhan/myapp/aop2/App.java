@@ -5,10 +5,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 	public static void main(String[] args) {
-		ApplicationContext ctx=new ClassPathXmlApplicationContext("aop1.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("aop2.xml");
+
+//		Calculator cal = ctx.getBean("cal", Calculator.class);
+//		cal.add();
+
+		BoardService service = ctx.getBean("bService2", BoardService.class);
+		service.selectAll().stream().forEach(board->System.out.println(board));
 		
-		Calculator cal = ctx.getBean("proxyCal", Calculator.class);
-		int result = cal.add(10, 20);
-		System.out.println("합계는:" + result);
+		//System.out.println("합계는: " + result);
 	}
 }

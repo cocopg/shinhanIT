@@ -34,7 +34,7 @@
 
 <!-- FrontController인 DispatcherServlet가 읽는다
 controller scan -->
-		<context:component-scan
+		<!-- <context:component-scan
 		base-package="com.shinhan.myapp, org.firstzone" />
 		
 		<bean id="dataSource"
@@ -45,7 +45,7 @@ controller scan -->
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<property name="username" value="hr" />
 		<property name="password" value="hr" />
-	</bean>
+	</bean> -->
 
 	
 </beans>

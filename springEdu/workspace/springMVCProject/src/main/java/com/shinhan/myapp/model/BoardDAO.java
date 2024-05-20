@@ -11,12 +11,15 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository("bDAO")  // @Component(媛앹껜 Bean) + DAO
 public class BoardDAO {
 	
 	@Autowired
+	//같은 타입이 여러 개 있으면 이름을 비교해서, 같은 이름의 Bean을 Injection
+	@Qualifier("dataSource")
 	DataSource ds;
 
 	Connection conn;

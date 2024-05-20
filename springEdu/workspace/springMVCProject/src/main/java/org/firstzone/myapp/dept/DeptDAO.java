@@ -11,6 +11,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,7 +24,10 @@ import com.shinhan.myapp.util.DBUtil;
 @Repository
 public class DeptDAO {
 	
+	//≈∏¿‘¿Ã ∞∞¿∏∏È Injection
+	//∞∞¿∫ ≈∏¿‘¿Ã ø©∑Ø∞≥¿Ã∏È error
 	@Autowired
+	@Qualifier("dataSource")
 	DataSource ds;
 	
 	Connection conn;
@@ -58,7 +62,7 @@ public class DeptDAO {
 		String sql = "update departments"
 				+ " set DEPARTMENT_NAME=?,"
 				+ " MANAGER_ID=?,"
-				+ " LOCATION_ID=?,"
+				+ " LOCATION_ID=?"
 				+ " where DEPARTMENT_ID=?";
 		try {
 
@@ -68,7 +72,7 @@ public class DeptDAO {
 			pst.setInt(2, dept.getManager_id());
 			pst.setInt(3, dept.getLocation_id());
 			pst.setInt(4, dept.getDepartment_id());
-			result = pst.executeUpdate(); //DMLÎ¨∏Ïû•?? executeUpdate, SelectÎ¨∏Ï? executeQuery //Í±¥Ïàò, Î™ªÌïòÎ©? 0, ?óê?ü¨?ÇòÎ©? -1
+			result = pst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

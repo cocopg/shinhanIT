@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.shinhan.myapp.util.DBUtil;
@@ -25,6 +26,8 @@ import com.shinhan.myapp.util.DBUtil;
 public class EmpDAO {
 
 	@Autowired
+	@Qualifier("dataSource")
+	
 	DataSource ds;
 	
 	Connection conn;
@@ -344,7 +347,7 @@ public class EmpDAO {
 	
 	// 매니저 모두 조회
 	public List<HashMap<String, Object>> selectAllManager() {
-		List<HashMap<String, Object>> emplist = new ArrayList<>();
+		List<HashMap<String, Object>> mlist = new ArrayList<>();
 		String sql = "SELECT EMPLOYEE_ID, FIRST_NAME ||' '|| LAST_NAME FULLNAME "
 				+ "FROM EMPLOYEES "
 				+ "WHERE EMPLOYEE_ID IN (SELECT DISTINCT MANAGER_ID "
@@ -358,7 +361,7 @@ public class EmpDAO {
 				HashMap<String, Object> data = new HashMap<>();
 				data.put("employee_id", rs.getInt(1));
 				data.put("fullname", rs.getString(2));
-				emplist.add(data);
+				mlist.add(data);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -366,7 +369,7 @@ public class EmpDAO {
 		} finally {
 			DBUtil.dbDisconnect(conn, st, rs);
 		}
-		return emplist;
+		return mlist;
 	}
 		
 	// 로그인

@@ -111,8 +111,8 @@
     <div class="mb-3 mt-3">
       <label for="manager_id">매니져 ID: </label>
       <select name="manager_id">
-        <c:forEach items="${mlist}" var="map">
-            <option value="${map.employee_id}">${map.fullname}</option>
+        <c:forEach items="${mlist}" var="mng">
+            <option value="${mng.employee_id}">${mng.fullname}</option>
         </c:forEach>
       </select>
     </div>

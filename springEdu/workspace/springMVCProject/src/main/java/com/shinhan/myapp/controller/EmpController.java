@@ -46,12 +46,12 @@ public class EmpController {
 		session.setAttribute("jobSelect", jobSelect);
 		session.setAttribute("hdate", hdate);
 		session.setAttribute("salary", salary);
+		if(salary ==null)salary =0;
 		
 		Date startDate = DateUtil.getSQLDate(hdate);
 		List<EmpDTO> emplist2 = eService.selectByCondition(deptSelect, jobSelect, startDate, salary);
 		
-		logger.info(hdate);
-		
+//		logger.info(hdate);
 		model.addAttribute("emplist", emplist2);
 		model.addAttribute("deptlist", dService.selectAll());
 		model.addAttribute("jlist", eService.selectAllJob());
@@ -59,8 +59,11 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/empAll.do")
-	public String empAll(Model model, Integer deptid, String jobid) {
+	public String empAll(Model model, Integer deptid, String jobid, Integer salary) {
 		List<EmpDTO> emplist2 = null;
+		
+		if(deptid ==null)deptid =0;
+		emplist2 = eService.selectByCondition(deptid, jobid, null, 0);
 
 		if (deptid == null && jobid == null) {
 			emplist2 = eService.selectAll();

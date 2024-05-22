@@ -60,8 +60,9 @@
 		<tbody>
 			<c:forEach items="${emplist}" var="emp">
 				<tr>
-					<td><a
-						href="${path}/emp/empDetail.do?empid=${emp.employee_id}">${emp.employee_id}</td>
+					<td>
+					<a href="${path}/emp/empDetail.do?empid=${emp.employee_id}"/>${emp.employee_id}
+					</td>
 					<td>${emp.first_name}</td>
 					<td>${emp.last_name}</td>
 					<td>${emp.email}</td>
@@ -81,7 +82,7 @@
 </body>
 <script>
 	function f_condition() {
-		
+			
 		var param=$("#conditionForm").serialize();
 		location.href="${path}/emp/empAll2.do?" + param;
 		

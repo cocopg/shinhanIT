@@ -1,4 +1,4 @@
-<%@page import="java.util.HashMap"%>
+	<%@page import="java.util.HashMap"%>
 <%@page import="org.firstzone.myapp.dept.DeptDTO"%>
 <%@page import="org.firstzone.myapp.emp.JobDTO"%>
 <%@page import="java.util.List"%>
@@ -103,6 +103,7 @@
     <div class="mb-3 mt-3">
       <label for="department_id">부서번호: </label>
       <select name="department_id">
+      <option value="0">부서없음</option>
         <c:forEach items="${deptlist}" var="dept">
             <option value="${dept.getDepartment_id()}">${dept.getDepartment_name()}</option>
         </c:forEach>
@@ -111,6 +112,7 @@
     <div class="mb-3 mt-3">
       <label for="manager_id">매니져 ID: </label>
       <select name="manager_id">
+      <option value="0">매니저없음</option>
         <c:forEach items="${mlist}" var="mng">
             <option value="${mng.employee_id}">${mng.fullname}</option>
         </c:forEach>

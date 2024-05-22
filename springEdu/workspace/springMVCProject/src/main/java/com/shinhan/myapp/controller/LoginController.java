@@ -5,30 +5,40 @@ import javax.servlet.http.HttpSession;
 
 import org.firstzone.myapp.emp.EmpDTO;
 import org.firstzone.myapp.emp.EmpService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/auth")
 public class LoginController {
 	
 	@Autowired
 	EmpService eService;
 	
-	@GetMapping("/auth/login.do")
+	Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	
+	@GetMapping("/login.do")
 	public void loginDisplay() {
-		
+		logger.debug("login.do夸没(debug)");
+		logger.debug("login.do夸没(info)");
+		logger.debug("login.do夸没(warn)");
+		logger.debug("login.do夸没(error)");
 	}
 	
-	@GetMapping("/auth/logout.do")
+	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:login.do";
 	}
 	
-	@PostMapping("/auth/login.do")
+	@PostMapping("/login.do")
 	public String loginCheck(@RequestParam("email") String email,
 			@RequestParam("pswd") String phone,
 			HttpSession session,

@@ -6,6 +6,7 @@
 	<select id="selectAll" resultType="deptvo">
 		select * from departments
 	</select>
+	
 	<select id="selectById" parameterType="int" resultType="deptvo">
 		select *
 		from departments

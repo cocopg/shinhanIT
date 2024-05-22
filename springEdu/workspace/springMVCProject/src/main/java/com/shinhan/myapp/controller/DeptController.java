@@ -100,12 +100,12 @@ public class DeptController {
 
 	@PostMapping("/deptDBUpdate.do")
 	public String deptDBUpdate(DeptDTO dept, RedirectAttributes redirectAttr) {
-		int result = dService.deptInsert(dept);
+		int result = dService.deptUpdate(dept);
 		String message;
 		if(result>0) {
-			message = "insert success";
+			message = "update success";
 		}else {
-			message = "insert fail";
+			message = "update fail";
 		}
 		redirectAttr.addFlashAttribute("deptResult", message);
 		return "redirect:deptList.do";

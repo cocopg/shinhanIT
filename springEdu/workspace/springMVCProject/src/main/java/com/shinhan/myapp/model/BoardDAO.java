@@ -6,7 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
@@ -14,9 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.shinhan.myapp.util.DBUtil;
+
+//정의하기
 @Repository("bDAO")  // @Component(媛앹껜 Bean) + DAO
 public class BoardDAO {
 	
+	//적용하기
 	@Autowired
 	//같은 타입이 여러 개 있으면 이름을 비교해서, 같은 이름의 Bean을 Injection
 	@Qualifier("dataSource")
@@ -43,7 +50,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return boardList;
 	}
@@ -65,7 +72,7 @@ public class BoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			//DBUtil.dbDisconnect(conn, pst, rs);
+			DBUtil.dbDisconnect(conn, pst, rs);
 		}		
 		return board;
 	}
@@ -84,7 +91,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return result;
 	}
@@ -104,7 +111,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return result;
 	}
@@ -120,10 +127,28 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return result;
 	}
+	
+	public int deleteBoardArray(Integer[] checkBno) {
+		String sql = "delete from TBL_BOARD where bno in (%s)";
+		
+		sql = String.format(sql, Arrays.stream(checkBno).map(String::valueOf)
+				.collect(Collectors.joining(",")));
+			
+			try {
+				conn = ds.getConnection();
+				st = conn.createStatement();
+				result = st.executeUpdate(sql);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBUtil.dbDisconnect(conn, st, rs);
+			}
+			return result;
+		}
 
 	private BoardDTO makeBoard(ResultSet rs2) throws SQLException {
 		BoardDTO board = new BoardDTO();

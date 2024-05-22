@@ -1,53 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
 </head>
 <body>
-<c:set var="path" value="${pageContext.servletContext.contextPath}"/>
-<p>${path}</p>
-<a href="${path }/emp/empInsert.do">신규직원등록</a>
-<h1>직원목록</h1>
-<table border="1">
-	<thead>
-		<tr>
-			<th>직원 번호</th>
-			<th>이름</th>
-			<th>성</th>
-			<th>이메일</th>
-			<th>전화번호</th>
-			<th>직책</th>
-			<th>급여</th>
-			<th>부서</th>
-			<th>매니져</th>
-			<th>커미션</th>
-			<th>입사일</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${emplist}" var="emp">
+	<%@ include file="../common/header.jsp"%>
+	<a href="${path}/emp/empInsert.do">신규직원등록</a>
+	<hr>
+	<form id = "conditionForm">
+		부서선택: 
+		<select id="deptSelect" name="deptSelect">
+			<option value="0">전체</option>
+			<c:forEach var="dept" items="${deptlist }">
+				<option ${deptSelect == dept.department_id?"selected":"" } value="${dept.department_id }">${dept.department_name}</option>
+			</c:forEach>
+		</select> 
+		직책별선택: 
+		<select id="jobSelect" name="jobSelect">
+			<option value="all">전체</option>
+			<c:forEach var="job" items="${jlist}">
+				<option ${jobSelect == job.job_id?"selected":"" } value="${job.job_id}">${job.job_title}</option>
+			</c:forEach>
+		</select> 
+		<input type="date" id="hdate" name="hdate" value="${hdate }"> 
+		<input type="number" id="salary" name="salary" value="${salary }">
+
+	</form>
+
+	<button onclick="f_condition()">4가지 조건 조회</button>
+	<button onclick="f_deptSelect()">부서조회</button>
+	<button onclick="f_jobSelect()">직책별조회</button>
+
+	<h1>직원목록</h1>
+	<table border="1">
+		<thead>
 			<tr>
-				<td>
-				<a href="${path}/emp/empDetail.do?empid=${emp.employee_id}">${emp.employee_id}
-				</td>
-				<td>${emp.first_name}</td>
-				<td>${emp.last_name}</td>
-				<td>${emp.email}</td>
-				<td>${emp.phone_number}</td>
-				<td>${emp.job_id}</td>
-				<td>${emp.salary}</td>
-				<td>${emp.department_id}</td>
-				<td>${emp.manager_id}</td>
-				<td>${emp.commission_pct}</td>
-				<td>${emp.hire_date}</td>
-				<td><button onclick="location.href='empDelete.do?empid=${emp.employee_id}'">삭제</button>
+				<th>직원 번호</th>
+				<th>이름</th>
+				<th>성</th>
+				<th>이메일</th>
+				<th>전화번호</th>
+				<th>직책</th>
+				<th>급여</th>
+				<th>부서</th>
+				<th>매니져</th>
+				<th>커미션</th>
+				<th>입사일</th>
 			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<c:forEach items="${emplist}" var="emp">
+				<tr>
+					<td><a
+						href="${path}/emp/empDetail.do?empid=${emp.employee_id}">${emp.employee_id}</td>
+					<td>${emp.first_name}</td>
+					<td>${emp.last_name}</td>
+					<td>${emp.email}</td>
+					<td>${emp.phone_number}</td>
+					<td>${emp.job_id}</td>
+					<td>${emp.salary}</td>
+					<td>${emp.department_id}</td>
+					<td>${emp.manager_id}</td>
+					<td>${emp.commission_pct}</td>
+					<td>${emp.hire_date}</td>
+					<td><button
+							onclick="location.href='empDelete.do?empid=${emp.employee_id}'">삭제</button>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
+<script>
+	function f_condition() {
+		
+		var param=$("#conditionForm").serialize();
+		location.href="${path}/emp/empAll2.do?" + param;
+		
+	}
+
+	function f_deptSelect() {
+		var deptid = $("#deptSelect").val();
+		location.href = "${path}/emp/empAll.do?deptid=" + deptid;
+	}
+
+	function f_jobSelect() {
+		var jobid = $("#jobSelect").val();
+		location.href = "${path}/emp/empAll.do?jobid=" + jobid;
+	}
+</script>
 </html>

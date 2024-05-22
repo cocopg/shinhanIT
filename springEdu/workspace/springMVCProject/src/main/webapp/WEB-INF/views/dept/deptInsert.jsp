@@ -12,7 +12,6 @@
 <img alt="" src="${path }/resources/image/Group 230.png" width="100" height="100">
 	<h1>부서등록</h1>
 	<form action="${path }/dept/deptInsert.do" method="post">
-		부서번호(구라): <input type="number" name="deptid2" value =""><br>
 		부서번호: <input type="number" name="department_id" value =""><br>
 		부서이름: <input type="text" name="department_name" value =""><br>
 		매니저:

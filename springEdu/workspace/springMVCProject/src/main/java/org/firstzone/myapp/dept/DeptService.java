@@ -3,6 +3,7 @@ package org.firstzone.myapp.dept;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
@@ -10,7 +11,8 @@ import org.springframework.stereotype.Service;
 public class DeptService {
 	
 	@Autowired
-	DeptDAO deptDAO;	
+	@Qualifier("deptmybatis")
+	DeptDAOInterface deptDAO;	
 
 	//8. ?‚­? œ(Delete)
 	public int deptDelete(int deptid) {

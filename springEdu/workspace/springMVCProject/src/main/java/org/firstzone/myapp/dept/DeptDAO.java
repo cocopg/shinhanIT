@@ -22,7 +22,7 @@ import com.shinhan.myapp.util.DBUtil;
 //DAO(Data Access?븯?뒗 鍮꾩??땲?뒪濡쒖쭅?쓣 ?옉?꽦?븯?뒗 Object)
 
 @Repository
-public class DeptDAO {
+public class DeptDAO implements DeptDAOInterface {
 	
 	//타입이 같으면 Injection
 	//같은 타입이 여러개이면 error

@@ -101,8 +101,8 @@
       <input type="text" class="form-control" id="phonenumber" placeholder="Enter phonenumber" name="phonenumber">
     </div>
     <div class="mb-3 mt-3">
-      <label for="dept_id">부서번호: </label>
-      <select name="dept_id">
+      <label for="department_id">부서번호: </label>
+      <select name="department_id">
         <c:forEach items="${deptlist}" var="dept">
             <option value="${dept.getDepartment_id()}">${dept.getDepartment_name()}</option>
         </c:forEach>

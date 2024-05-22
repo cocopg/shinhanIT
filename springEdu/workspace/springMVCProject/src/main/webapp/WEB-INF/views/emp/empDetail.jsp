@@ -9,8 +9,9 @@
 </head>
 <body>
 <!-- include지시자는 파일을 합쳐서 컴파일한다. -->
+<%@include file="../common/header.jsp" %>
  <h1>직원상세보기</h1>
- <form action="empDetail.do" method="post">
+ <form action="${path }/emp/empDetail.do" method="post">
     <div class="mb-3 mt-3">
       <label for="employee_id">직원번호:</label>
       <input type="number" class="form-control" id="employee_id" placeholder="Enter employee_id" name="employee_id" value="${empInfo.employee_id}" required>

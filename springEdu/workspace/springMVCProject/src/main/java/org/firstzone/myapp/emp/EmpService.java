@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
@@ -16,7 +17,8 @@ public class EmpService {
 
 	//???��?�� 같으�? ?��?��?���? injection
 	@Autowired
-	EmpDAO empDAO;
+	@Qualifier("empmybatis")
+	EmpDAOMybatis empDAO;
 
 	public EmpDTO loginCheck(String email, String phone) {
 		return empDAO.loginCheck(email, phone);

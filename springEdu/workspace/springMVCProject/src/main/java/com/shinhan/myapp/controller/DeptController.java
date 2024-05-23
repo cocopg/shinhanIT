@@ -95,6 +95,7 @@ public class DeptController {
 	public String deptInfoView(@ModelAttribute("dept") DeptDTO dept, Model model) {
 		System.out.println(dept);
 		// model.addAttribute("dept", dept);
+		model.addAttribute("mlist", eService.selectAllManager());
 		return "dept/deptUpdate_DB";
 	}
 

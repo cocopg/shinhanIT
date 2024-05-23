@@ -26,7 +26,7 @@ public class LoginCheckFilter implements Filter {
 		// webshop/auth/login.do
 		if (!req.getRequestURI().endsWith("login.do")) {
 			session.setAttribute("lastRequest", req.getRequestURI());
-
+			session.setAttribute("queryString", req.getQueryString());
 			EmpDTO emp = (EmpDTO) session.getAttribute("emp");
 			if (emp == null) {
 				//로그인 안되어있으면 브라우저로 내려가서 로그인으로 재요청

@@ -42,7 +42,8 @@ setTimeout(()=?{
 						<td>${board.title}</td>
 						<td>${board.content}</td>
 						<td>${board.writer}</td>
-						<td><img src="${cpath}/upload/${board.pic}"
+						<td>
+						<img src="${path}/resources/uploads/${board.pic}"
 							alt="${board.title}" width=50 height=50> <a
 							href="${cpath}/download.do?filename=${board.pic}">다운로드</a></td>
 						<td>${board.create_date}</td>

@@ -44,6 +44,8 @@ public class LoginController {
 			HttpSession session,
 			HttpServletRequest request) {
 		
+		//mybatis로 변경/ JDBC에서는 존재하지 않는 id는 -1, 틀린 pw는 -2
+		
 		EmpDTO emp = eService.loginCheck(email, phone);
 		if(emp.getEmployee_id() ==-1) {
 			session.setAttribute("loginResult", "존재하지 않는 ID입니다.");
@@ -57,6 +59,7 @@ public class LoginController {
 			session.setAttribute("emp", emp);
 			
 			String lastRequest = (String)session.getAttribute("lastRequest");
+			String queryString = (String)session.getAttribute("queryString");
 			String goPage;
 			if(lastRequest == null) {
 				goPage = "../index.do";
@@ -64,6 +67,7 @@ public class LoginController {
 				//로그인 없이 다른 페이지를 요청
 				int length = request.getContextPath().length();
 				goPage = lastRequest.substring(length);
+				if(queryString!=null) goPage = goPage + "?" + queryString;
 			}
 
 			return "redirect:" + goPage;
